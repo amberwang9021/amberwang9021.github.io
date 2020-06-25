@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>【MySQL】06 | AmberWang&#39;s World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="变量 系统变量   全局变量 global 会话变量 session   自定义变量 用户变量 局部变量系统变量   说明：变量由系统提供，不是用户定义，属于服务器层面 语法 查看所有的系统变量show global|[session] variables; 查看满足条件的部分系统变量show global|[session] variables like &#39;%char%&#39;; 查看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【MySQL】06">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9106/index.html">
+<meta property="og:site_name" content="AmberWang&#39;s World">
+<meta property="og:description" content="变量 系统变量   全局变量 global 会话变量 session   自定义变量 用户变量 局部变量系统变量   说明：变量由系统提供，不是用户定义，属于服务器层面 语法 查看所有的系统变量show global|[session] variables; 查看满足条件的部分系统变量show global|[session] variables like &#39;%char%&#39;; 查看">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-25T09:01:26.612Z">
+<meta property="article:modified_time" content="2020-04-01T15:31:43.853Z">
+<meta property="article:author" content="Amber Wang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="AmberWang&#39;s World" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/me.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Amber Wang</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">Do what you like.</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="/xxxxx" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.csdn.net/baidu_21483933">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://segmentfault.com/blog/maocg_web">segmentfault</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.jianshu.com/users/eb37ef89c746/latest_articles">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱动漫,爱游戏,爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Amber Wang</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/me.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Amber Wang</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Do what you like.</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="/xxxxx" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-【MySQL】06" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/" class="article-date">
+      <time datetime="2020-06-25T09:01:26.612Z" itemprop="datePublished">2020-06-25</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【MySQL】06
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li>系统变量  <ul>
+<li>全局变量 <code>global</code></li>
+<li>会话变量 <code>session</code></li>
+</ul>
+</li>
+<li>自定义变量<ul>
+<li>用户变量</li>
+<li>局部变量<h3 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h3></li>
+</ul>
+</li>
+<li>说明：变量由系统提供，不是用户定义，属于服务器层面</li>
+<li>语法<ul>
+<li>查看所有的系统变量<br><code>show global|[session] variables;</code></li>
+<li>查看满足条件的部分系统变量<br><code>show global|[session] variables like &#39;%char%&#39;;</code></li>
+<li>查看指定的某个系统变量的值<br><code>select @@global|[session].系统变量名;</code></li>
+<li>为某个系统变量赋值<br><code>set global|[session] 系统变量名=值</code><br>或者<code>set @@global|[session].系统变量名=值</code>  </li>
+</ul>
+</li>
+<li>注意：如果是全局级别，则需要加global，如果是会话级别，则需要加session，如果不写，则默认session</li>
+</ul>
+<h4 id="全局变量-global"><a href="#全局变量-global" class="headerlink" title="全局变量  global"></a>全局变量  <code>global</code></h4><ul>
+<li>作用域：服务器每次启动将为所有的全局变量赋初始值，针对于所有的会话（连接）有效，但不能跨重启<h4 id="会话变量-session"><a href="#会话变量-session" class="headerlink" title="会话变量 session"></a>会话变量 <code>session</code></h4></li>
+<li>作用域：仅仅针对于当前会话（连接）有效</li>
+</ul>
+<h3 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h3><ul>
+<li>说明：变量是用户自定义的，不是由系统定义的</li>
+<li>使用步骤：<ul>
+<li>声明</li>
+<li>赋值</li>
+<li>使用（查看、比较、运算等）</li>
+</ul>
+</li>
+</ul>
+<h4 id="用户变量"><a href="#用户变量" class="headerlink" title="用户变量"></a>用户变量</h4><ul>
+<li>作用域：针对于当前会话（连接）有效，同于会话变量的作用域</li>
+<li>步骤<ul>
+<li>声明并初始化（赋值的操作符：=或:=）<br><code>set @用户变量名=值;  
+set @用户变量名:=值;  
+select @用户变量名:=值;</code> </li>
+<li>赋值（更新用户变量的值）  <ul>
+<li>方式一：<br><code>set @用户变量名=值;  
+set @用户变量名:=值;  
+select @用户变量名:=值;</code> </li>
+<li>方式二：<br><code>select 字段 into @变量名 from 表;</code></li>
+</ul>
+</li>
+<li>使用（查看用户变量的值）<br><code>select @用户变量名</code></li>
+</ul>
+</li>
+<li>应用在任何地方</li>
+</ul>
+<p>案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#声明并初始化</span><br><span class="line">set @name&#x3D;&#39;john&#39;;</span><br><span class="line">set @name&#x3D;100;</span><br><span class="line">set @count&#x3D;1;</span><br><span class="line">#赋值</span><br><span class="line">select count(*) into @count</span><br><span class="line">from employees;</span><br><span class="line">#查看</span><br><span class="line">select @count;</span><br></pre></td></tr></table></figure>
+<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><ul>
+<li>作用域：仅仅在定义它的begin end中有效，应用在begin end中的第一句话</li>
+<li>步骤<ul>
+<li>声明<br><code>declare 变量名 类型;</code><br><code>declare 变量名 类型 default 值;</code></li>
+<li>赋值<ul>
+<li>方式一：<br><code>set 用户变量名=值;  
+set 用户变量名:=值;  
+select @用户变量名:=值;</code> </li>
+<li>方式二：<br><code>select 字段 into 局部变量名 from 表;</code></li>
+</ul>
+</li>
+<li>使用<br><code>select 局部变量名;</code>  </li>
+</ul>
+</li>
+</ul>
+<p><em>用户变量与局部变量对比</em><br>| - | 作用域 | 定义和使用的位置 | 语法 |<br>| :—–| :—-: | :—-: |:—-:|<br>| 用户变量 | 当前会话 | 会话中的任何地方 |必须加@符号,不用限定类型 |<br>| 局部变量 | begin end中| 只能在begin end中，且为第一句 |一般不加@，除非select，需要限定类型|<br>案例：声明两个变量并初始值，求和，并打印</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#用户变量</span><br><span class="line">set @m&#x3D;1;</span><br><span class="line">set @n&#x3D;2;</span><br><span class="line">set @sum&#x3D;@m+@n;</span><br><span class="line">select @sum;</span><br></pre></td></tr></table></figure>
+<h2 id="存储过程和函数（类似方法）"><a href="#存储过程和函数（类似方法）" class="headerlink" title="存储过程和函数（类似方法）"></a>存储过程和函数（类似方法）</h2><ul>
+<li>含义：一组预先编译好的SQL语句的集合，理解为批处理语句</li>
+<li>好处：<ul>
+<li>提高代码的重用性</li>
+<li>简化操作</li>
+<li>减少了编译次数并且减少了和数据库服务器连接的次数，提高了效率<h3 id="创建语法"><a href="#创建语法" class="headerlink" title="创建语法"></a>创建语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create procedure 存储过程名(参数列表)(</span><br><span class="line">begin</span><br><span class="line">    存储过程体（一组合法的sql语句）</span><br><span class="line">end</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>注意<ul>
+<li>参数列表包含三部分<ul>
+<li>参数模式 <code>IN</code></li>
+<li>参数名 <code>stuname</code></li>
+<li>参数类型 <code>VARCHAR(20)</code></li>
+</ul>
+</li>
+<li>参数模式<ul>
+<li><code>IN</code>：该参数可以作为输入，即需要调用传入值</li>
+<li><code>OUT</code>：作为输出，即可以作为返回值</li>
+<li><code>INOUT</code>：即需要传入值，又可以返回值</li>
+</ul>
+</li>
+<li>如果存储过程体仅仅只有一句话，begin end可以省略。存储过程体的每条SQL语句的结尾必须加分号。存储过程的结尾可以使用DELIMITER重新设置<ul>
+<li>语法：<code>DELIMITER 结束标记</code><h3 id="调用语法"><a href="#调用语法" class="headerlink" title="调用语法"></a>调用语法</h3><code>call 存储过程名（实参列表）;</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select * from admin;</span><br><span class="line">delimiter $</span><br><span class="line">create procedure myp1()</span><br><span class="line">begin</span><br><span class="line">    insert into admin(username,&#39;password&#39;) values(&#39;john1&#39;,&#39;000&#39;,&#39;john2&#39;,&#39;000&#39;,&#39;john3&#39;,&#39;000&#39;,&#39;john4&#39;,&#39;000&#39;,&#39;john5&#39;,&#39;000&#39;);</span><br><span class="line">end $</span><br><span class="line">#调用</span><br><span class="line">call myp1()$</span><br></pre></td></tr></table></figure>
+<h4 id="创建带in模式参数的存储过程"><a href="#创建带in模式参数的存储过程" class="headerlink" title="创建带in模式参数的存储过程"></a>创建带in模式参数的存储过程</h4><p>案例1：创建存储过程实现：根据女神名，查询对应的男神信息   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create procedure myp2(IN beautyName VARCHAR(20))</span><br><span class="line">begin</span><br><span class="line">    select bo.*</span><br><span class="line">    from boys bo</span><br><span class="line">    right join beauty b on bo.id&#x3D;b.boyfriend_id</span><br><span class="line">    where b.name&#x3D;beautyName;</span><br><span class="line">end $</span><br><span class="line">#调用</span><br><span class="line">call myp2(&#39;柳岩&#39;)$</span><br></pre></td></tr></table></figure>
+<p>案例2：创建存储过程实现，用户是否登录成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create procedure myp4(IN username VARCHAR(20),IN PASSWORD VARCHAR(20))</span><br><span class="line">BEGIN</span><br><span class="line">    DECLARE result into default 0;#声明并初始化</span><br><span class="line">    select count(*) into result #赋值</span><br><span class="line">    from admin</span><br><span class="line">    where admin.username &#x3D; username</span><br><span class="line">    AND admin.password &#x3D; PASSWORD;</span><br><span class="line">    select IF(result&gt;0,&#39;成功&#39;,&#39;失败&#39;); #使用</span><br><span class="line">END$</span><br><span class="line">#调用</span><br><span class="line">CALL myp4(&#39;张飞&#39;,&#39;8888&#39;)$</span><br></pre></td></tr></table></figure>
+
+<h4 id="带out模式参数的存储过程"><a href="#带out模式参数的存储过程" class="headerlink" title="带out模式参数的存储过程"></a>带out模式参数的存储过程</h4><p>案例1：根据女神名，返回对应的男神名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create procedure myp5(IN beautyName VARCHAR(20),OUT boyName VARCHAR(20))</span><br><span class="line">begin</span><br><span class="line">    select bo.boyName INTO boyName</span><br><span class="line">    from boys bo</span><br><span class="line">    INNER JOIN beauty b ON bo.id &#x3D; b.boyfriend_id</span><br><span class="line">    WHERE b.name &#x3D; beautyName;</span><br><span class="line">end $</span><br><span class="line">#调用</span><br><span class="line">CALL myp5(&#39;小昭&#39;,@bName)$</span><br><span class="line">select @bName $</span><br></pre></td></tr></table></figure>
+<p>案例2：根据女神名，返回对应的男神名和男神魅力值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create procedure myp6(IN beautyName VARCHAR(20),OUT boyName VARCHAR(20),OUT userCP INT)</span><br><span class="line">begin</span><br><span class="line">    select bo.boyName, bo.userCP INTO boyName,userCP</span><br><span class="line">    from boys bo</span><br><span class="line">    INNER JOIN beauty b ON bo.id &#x3D; b.boyfriend_id</span><br><span class="line">    WHERE b.name &#x3D; beautyName;</span><br><span class="line">end $</span><br><span class="line">#调用</span><br><span class="line">CALL myp6(&#39;小昭&#39;,@bName,@userCP)$</span><br><span class="line">select @bName,@userCP $</span><br></pre></td></tr></table></figure>
+
+<h4 id="带inout模式参数的存储过程"><a href="#带inout模式参数的存储过程" class="headerlink" title="带inout模式参数的存储过程"></a>带inout模式参数的存储过程</h4><p>案例1；传入a和b两个值，最终a,b翻倍并返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create procedure myp8(inout a INT, inout b INT)</span><br><span class="line">begin</span><br><span class="line">    set a&#x3D;a*2;</span><br><span class="line">    set b&#x3D;b*2;</span><br><span class="line">end $</span><br><span class="line">#调用</span><br><span class="line">set @m&#x3D;10 $</span><br><span class="line">set @n&#x3D;20 $</span><br><span class="line">CALL myp8(@m,@n) $</span><br><span class="line">selet @m,@n $</span><br></pre></td></tr></table></figure>
+<h3 id="删除存储过程"><a href="#删除存储过程" class="headerlink" title="删除存储过程"></a>删除存储过程</h3><ul>
+<li>语法 <code>drop procedure 存储过程名</code><br><code>drop procedure p1;</code><br><code>drop procedure p2,p3;</code> × 不可以同时删除多个<h3 id="查看存储过程的信息"><a href="#查看存储过程的信息" class="headerlink" title="查看存储过程的信息"></a>查看存储过程的信息</h3><code>DESC myp2;</code>×<br><code>SHOW create procedure myp2;</code> √</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p><em>与存储过程对比</em><br>存储过程：可以有0个返回，也可以有多个返回，适合做批量插入、批量更新<br>函数：有且仅有1个返回，适合做处理数据后返回一个结果</p>
+<h3 id="创建语法-1"><a href="#创建语法-1" class="headerlink" title="创建语法"></a>创建语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create function 函数名（参数列表） returns 返回类型</span><br><span class="line">begin</span><br><span class="line">    函数体</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数列表 包含两部分：参数名 参数类型</li>
+<li>函数体：肯定会有return语句，如果没有会报错，如果return语句没有放在函数体的最后也不报错，但没有意义<br>格式 <code>return 值;</code></li>
+<li>函数体重仅有一句话，则可以省略begin end</li>
+<li>使用delimiter语句设置结束标记</li>
+</ul>
+<h4 id="无参有返回"><a href="#无参有返回" class="headerlink" title="无参有返回"></a>无参有返回</h4><p>案例：返回公司的员工个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create function myf1() returns int</span><br><span class="line">begin </span><br><span class="line">    declare c int default 0;#定义变量</span><br><span class="line">    select count(*) into c #赋值</span><br><span class="line">    from employees;</span><br><span class="line">    return c;</span><br><span class="line">end</span><br><span class="line">select myf1();</span><br></pre></td></tr></table></figure>
+
+<h4 id="有参有返回"><a href="#有参有返回" class="headerlink" title="有参有返回"></a>有参有返回</h4><p>案例：根据员工名，返回他的工资</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create function myf2(empName VARCHAR(20)) returns double</span><br><span class="line">begin</span><br><span class="line">    set @sal&#x3D;0; #定义用户变量</span><br><span class="line">    select salary into @sal #赋值</span><br><span class="line">    from employees</span><br><span class="line">    where last_name &#x3D; empName;</span><br><span class="line">    return @sal;</span><br><span class="line">end $</span><br><span class="line">select myf2(&#39;k_ing&#39;) $</span><br></pre></td></tr></table></figure>
+<p>案例：根据部门名，返回该部门的平均工资</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create function myf3(depName VARCHAR(20)) returns double</span><br><span class="line">begin</span><br><span class="line">    declare sal double;</span><br><span class="line">    select AVG(salary) INTO sal</span><br><span class="line">    from employees e</span><br><span class="line">    JOIN departments d </span><br><span class="line">    ON e.department_id&#x3D;d.department_id</span><br><span class="line">    where d.department_name&#x3D;depNamel</span><br><span class="line">    return sal;</span><br><span class="line">end $</span><br><span class="line">SELECT myf3(&#39;IT&#39;) $</span><br></pre></td></tr></table></figure>
+<h3 id="查看函数"><a href="#查看函数" class="headerlink" title="查看函数"></a>查看函数</h3><p><code>show create function myf3;</code></p>
+<h3 id="删除函数"><a href="#删除函数" class="headerlink" title="删除函数"></a>删除函数</h3><p><code>drop function myf3;</code></p>
+<p>案例：创建函数，实现传入两个float，返回二者之和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create function test_fun1(num1 float,num2 float) returns float</span><br><span class="line">begin</span><br><span class="line">    declare sum float default 0;</span><br><span class="line">    set sum&#x3D;num1+num2;</span><br><span class="line">    return sum;</span><br><span class="line">end $</span><br><span class="line">select test_fun1(1,2) $</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程控制结构"><a href="#流程控制结构" class="headerlink" title="流程控制结构"></a>流程控制结构</h2><ul>
+<li>顺序结构：程序从上往下依次执行</li>
+<li>分支结构：程序从两条或多条路径中选择一条去执行</li>
+<li>循环结构：程序在满足一定条件的基础上，重复执行一段代码</li>
+</ul>
+<h3 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h3><h4 id="IF函数"><a href="#IF函数" class="headerlink" title="IF函数"></a>IF函数</h4><ul>
+<li>语法：<code>select IF(表达式1，表达式2，表示式3);</code></li>
+<li>执行顺序：如果表达式1成立，则if函数返回表达式2的值，否则返回表达式3的值</li>
+<li>应用：任何地方<h4 id="CASE结构"><a href="#CASE结构" class="headerlink" title="CASE结构"></a>CASE结构</h4></li>
+<li>情况1：类似于JAVA的switch语句，一般用于实现等值判断<ul>
+<li>语法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">case 变量|表达式|字段&#96;  </span><br><span class="line">when 要判断的值 then 返回的值1或语句1</span><br><span class="line">when 要判断的值 then 返回的值2或语句2</span><br><span class="line">...</span><br><span class="line">else 要返回的值n或语句n</span><br><span class="line">end (end case (如果是语句的话))</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>情况2：类似于JAVA中的多重if语句，一般用于实现区间判断<ul>
+<li>语法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">case </span><br><span class="line">when 要判断的条件1 then 返回的值1或语句1;</span><br><span class="line">when 要判断的条件2 then 返回的值2或语句2;</span><br><span class="line">...</span><br><span class="line">else 要返回的值n或语句n;</span><br><span class="line">end (case);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>特点<ul>
+<li>可以作为表达式，嵌套在其他语句中使用，可以放在任何地方</li>
+<li>可以作为独立的语句，只能放在begin end中</li>
+<li>else可以省略，如果else省略，并且所有的条件都不满足，返回NULL</li>
+</ul>
+</li>
+</ul>
+<p>案例：创建存储过程，根据传入的成绩，来显示等级，比如传入的成绩：90-100 显示A；80-90 B；60-80 C；否则显示D</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create procedure test_case(IN score INT)</span><br><span class="line">begin</span><br><span class="line">    case</span><br><span class="line">    when score &gt;&#x3D; 90 and score &lt;&#x3D; 100 then select &#39;A&#39;;</span><br><span class="line">    when score &gt;&#x3D; 80 then select &#39;B&#39;;</span><br><span class="line">    when score &gt;&#x3D; 60 then select &#39;C&#39;;</span><br><span class="line">    else select &#39;D&#39;;</span><br><span class="line">    end case;</span><br><span class="line">end $</span><br><span class="line">call test_case(95);</span><br></pre></td></tr></table></figure>
+<h4 id="IF结构"><a href="#IF结构" class="headerlink" title="IF结构"></a>IF结构</h4><ul>
+<li>功能：实现多重分支</li>
+<li>语法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if 条件1 then 语句1;</span><br><span class="line">elseif 条件2 then 语句2;</span><br><span class="line">...</span><br><span class="line">[else 语句n;]</span><br><span class="line">end if;</span><br></pre></td></tr></table></figure></li>
+<li>应用在begin end中</li>
+</ul>
+<h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><ul>
+<li>分类：while、loop、repeat</li>
+<li>循环控制：iterate类似于continue，继续，结束本次循环，继续下一次；leave类似于 break 跳出，结束当前所在的循环  <h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4></li>
+<li>语法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【标签：】while 循环条件 do</span><br><span class="line">    循环体;</span><br><span class="line">end while 【标签】;</span><br></pre></td></tr></table></figure>
+<h4 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h4></li>
+<li>语法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【标签：】loop</span><br><span class="line">    循环体;</span><br><span class="line">end loop 【标签】;</span><br></pre></td></tr></table></figure></li>
+<li>可以用来模拟简单的死循环<h4 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h4></li>
+<li>语法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">【标签：】repeat</span><br><span class="line">    循环体;</span><br><span class="line">until 结束循环的条件</span><br><span class="line">end repeat 【标签】;</span><br></pre></td></tr></table></figure>
+案例1：批量插入，根据次数插入到admin表中多条记录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create procedure pro_while1(IN insertcount INT)</span><br><span class="line">begin</span><br><span class="line">    declear i INT default 1;</span><br><span class="line">    while i&lt;&#x3D;insertCount DO</span><br><span class="line">        INSERT INTO admin(username,&#39;password&#39;) VALUES(CONCAT(&#39;Rose&#39;,i),&#39;666&#39;);</span><br><span class="line">        SET i&#x3D;i+1;</span><br><span class="line">    end while;</span><br><span class="line">end;</span><br><span class="line">CALL pro_while1(100);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>案例2（添加leave语句）：批量插入，根据次数插入到admin表中多条记录，如果次数&gt;20则停止</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create procedure pro_while2(IN insertcount INT)</span><br><span class="line">begin</span><br><span class="line">    declear i INT default 1;</span><br><span class="line">    a:while i&lt;&#x3D;insertCount DO</span><br><span class="line">        INSERT INTO admin(username,&#39;password&#39;) VALUES(CONCAT(&#39;Rose&#39;,i),&#39;666&#39;);</span><br><span class="line">        IF i&gt;&#x3D;20 THEN LEAVE a;</span><br><span class="line">        END IF;</span><br><span class="line">        SET i&#x3D;i+1;</span><br><span class="line">    end while a;</span><br><span class="line">end;</span><br><span class="line">CALL pro_while1(100);</span><br></pre></td></tr></table></figure>
+<p>案例3（添加iterate语句）：偶数次添加，奇数次不添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create procedure pro_while2(IN insertcount INT)</span><br><span class="line">begin</span><br><span class="line">    declear i INT default 0;</span><br><span class="line">    a:while i&lt;&#x3D;insertCount DO</span><br><span class="line">        set i&#x3D;i+1;</span><br><span class="line">        IF MOD(i,2)&#x3D;&#x3D;1 iterate a;</span><br><span class="line">        END IF;</span><br><span class="line">        INSERT INTO admin(username,&#39;password&#39;) VALUES(CONCAT(&#39;Rose&#39;,i),&#39;666&#39;);</span><br><span class="line">    end while a; </span><br><span class="line">end;</span><br><span class="line">CALL pro_while1(100);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/">【MySQL】06</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Amber Wang 的个人博客">Amber Wang</a></p>
+        <p><span>发布时间:</span>2020年06月25日 - 17时01分</p>
+        <p><span>最后更新:</span>2020年04月01日 - 23时31分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/" title="【MySQL】06">http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9106/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9106/　　作者: Amber Wang" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9104/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          【MySQL】04
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【MySQL】05</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">1.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统变量"><span class="toc-number">1.1.</span> <span class="toc-text">系统变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#全局变量-global"><span class="toc-number">1.1.1.</span> <span class="toc-text">全局变量  global</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#会话变量-session"><span class="toc-number">1.1.2.</span> <span class="toc-text">会话变量 session</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义变量"><span class="toc-number">1.2.</span> <span class="toc-text">自定义变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用户变量"><span class="toc-number">1.2.1.</span> <span class="toc-text">用户变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#局部变量"><span class="toc-number">1.2.2.</span> <span class="toc-text">局部变量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程和函数（类似方法）"><span class="toc-number">2.</span> <span class="toc-text">存储过程和函数（类似方法）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建语法"><span class="toc-number">2.1.</span> <span class="toc-text">创建语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用语法"><span class="toc-number">2.2.</span> <span class="toc-text">调用语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建带in模式参数的存储过程"><span class="toc-number">2.2.1.</span> <span class="toc-text">创建带in模式参数的存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带out模式参数的存储过程"><span class="toc-number">2.2.2.</span> <span class="toc-text">带out模式参数的存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带inout模式参数的存储过程"><span class="toc-number">2.2.3.</span> <span class="toc-text">带inout模式参数的存储过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除存储过程"><span class="toc-number">2.3.</span> <span class="toc-text">删除存储过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看存储过程的信息"><span class="toc-number">2.4.</span> <span class="toc-text">查看存储过程的信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-number">3.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建语法-1"><span class="toc-number">3.1.</span> <span class="toc-text">创建语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#无参有返回"><span class="toc-number">3.1.1.</span> <span class="toc-text">无参有返回</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有参有返回"><span class="toc-number">3.1.2.</span> <span class="toc-text">有参有返回</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看函数"><span class="toc-number">3.2.</span> <span class="toc-text">查看函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除函数"><span class="toc-number">3.3.</span> <span class="toc-text">删除函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程控制结构"><span class="toc-number">4.</span> <span class="toc-text">流程控制结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分支结构"><span class="toc-number">4.1.</span> <span class="toc-text">分支结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IF函数"><span class="toc-number">4.1.1.</span> <span class="toc-text">IF函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CASE结构"><span class="toc-number">4.1.2.</span> <span class="toc-text">CASE结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IF结构"><span class="toc-number">4.1.3.</span> <span class="toc-text">IF结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环结构"><span class="toc-number">4.2.</span> <span class="toc-text">循环结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#while"><span class="toc-number">4.2.1.</span> <span class="toc-text">while</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loop"><span class="toc-number">4.2.2.</span> <span class="toc-text">loop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#repeat"><span class="toc-number">4.2.3.</span> <span class="toc-text">repeat</span></a></li></ol></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9104/" title="上一篇: 【MySQL】04">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/" title="下一篇: 【MySQL】05">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9104/">【MySQL】04</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/">【MySQL】06</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/">【MySQL】05</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9103/">【MySQL】03</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9102/">【MySQL】02</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9101/">【MySQL】01</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 Amber Wang
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
