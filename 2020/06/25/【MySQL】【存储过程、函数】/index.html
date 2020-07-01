@@ -7,17 +7,17 @@
   
   
   
-  <title>【MySQL】06 | AmberWang&#39;s World</title>
+  <title>【MySQL】【存储过程、函数】 | AmberWang&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="变量 系统变量   全局变量 global 会话变量 session   自定义变量 用户变量 局部变量系统变量   说明：变量由系统提供，不是用户定义，属于服务器层面 语法 查看所有的系统变量show global|[session] variables; 查看满足条件的部分系统变量show global|[session] variables like &#39;%char%&#39;; 查看">
+  <meta name="description" content="变量 系统变量   全局变量 global 会话变量 session">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【MySQL】06">
-<meta property="og:url" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9106/index.html">
+<meta property="og:title" content="【MySQL】【存储过程、函数】">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/index.html">
 <meta property="og:site_name" content="AmberWang&#39;s World">
-<meta property="og:description" content="变量 系统变量   全局变量 global 会话变量 session   自定义变量 用户变量 局部变量系统变量   说明：变量由系统提供，不是用户定义，属于服务器层面 语法 查看所有的系统变量show global|[session] variables; 查看满足条件的部分系统变量show global|[session] variables like &#39;%char%&#39;; 查看">
+<meta property="og:description" content="变量 系统变量   全局变量 global 会话变量 session">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-25T09:01:26.612Z">
-<meta property="article:modified_time" content="2020-04-01T15:31:43.853Z">
+<meta property="article:modified_time" content="2020-07-01T09:59:27.984Z">
 <meta property="article:author" content="Amber Wang">
 <meta name="twitter:card" content="summary">
   
@@ -268,10 +268,10 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-【MySQL】06" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-【MySQL】【存储过程、函数】" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/" class="article-date">
+      <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/" class="article-date">
       <time datetime="2020-06-25T09:01:26.612Z" itemprop="datePublished">2020-06-25</time>
 </a>
 
@@ -286,7 +286,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【MySQL】06
+      【MySQL】【存储过程、函数】
     </h1>
   
 
@@ -307,7 +307,7 @@
         <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
 <li>系统变量  <ul>
 <li>全局变量 <code>global</code></li>
-<li>会话变量 <code>session</code></li>
+<li>会话变量 <code>session</code><a id="more"></a></li>
 </ul>
 </li>
 <li>自定义变量<ul>
@@ -373,36 +373,167 @@ select @用户变量名:=值;</code> </li>
 </ul>
 </li>
 </ul>
-<p><em>用户变量与局部变量对比</em><br>| - | 作用域 | 定义和使用的位置 | 语法 |<br>| :—–| :—-: | :—-: |:—-:|<br>| 用户变量 | 当前会话 | 会话中的任何地方 |必须加@符号,不用限定类型 |<br>| 局部变量 | begin end中| 只能在begin end中，且为第一句 |一般不加@，除非select，需要限定类型|<br>案例：声明两个变量并初始值，求和，并打印</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#用户变量</span><br><span class="line">set @m&#x3D;1;</span><br><span class="line">set @n&#x3D;2;</span><br><span class="line">set @sum&#x3D;@m+@n;</span><br><span class="line">select @sum;</span><br></pre></td></tr></table></figure>
-<h2 id="存储过程和函数（类似方法）"><a href="#存储过程和函数（类似方法）" class="headerlink" title="存储过程和函数（类似方法）"></a>存储过程和函数（类似方法）</h2><ul>
-<li>含义：一组预先编译好的SQL语句的集合，理解为批处理语句</li>
-<li>好处：<ul>
-<li>提高代码的重用性</li>
-<li>简化操作</li>
-<li>减少了编译次数并且减少了和数据库服务器连接的次数，提高了效率<h3 id="创建语法"><a href="#创建语法" class="headerlink" title="创建语法"></a>创建语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create procedure 存储过程名(参数列表)(</span><br><span class="line">begin</span><br><span class="line">    存储过程体（一组合法的sql语句）</span><br><span class="line">end</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>注意<ul>
-<li>参数列表包含三部分<ul>
-<li>参数模式 <code>IN</code></li>
-<li>参数名 <code>stuname</code></li>
-<li>参数类型 <code>VARCHAR(20)</code></li>
-</ul>
-</li>
-<li>参数模式<ul>
-<li><code>IN</code>：该参数可以作为输入，即需要调用传入值</li>
-<li><code>OUT</code>：作为输出，即可以作为返回值</li>
-<li><code>INOUT</code>：即需要传入值，又可以返回值</li>
-</ul>
-</li>
-<li>如果存储过程体仅仅只有一句话，begin end可以省略。存储过程体的每条SQL语句的结尾必须加分号。存储过程的结尾可以使用DELIMITER重新设置<ul>
-<li>语法：<code>DELIMITER 结束标记</code><h3 id="调用语法"><a href="#调用语法" class="headerlink" title="调用语法"></a>调用语法</h3><code>call 存储过程名（实参列表）;</code>  </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p><em>用户变量与局部变量对比</em></p>
+<table>
+<thead>
+<tr>
+<th align="left">-</th>
+<th align="center">作用域</th>
+<th align="center">定义和使用的位置</th>
+<th align="center">语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">用户变量</td>
+<td align="center">当前会话</td>
+<td align="center">会话中的任何地方</td>
+<td align="center">必须加@符号,不用限定类型</td>
+</tr>
+<tr>
+<td align="left">局部变量</td>
+<td align="center">begin end中</td>
+<td align="center">只能在begin end中，且为第一句</td>
+<td align="center">一般不加@，除非select，需要限定类型</td>
+</tr>
+<tr>
+<td align="left">案例：声明两个变量并初始值，求和，并打印</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#用户变量</span><br><span class="line">set @m&#x3D;1;</span><br><span class="line">set @n&#x3D;2;</span><br><span class="line">set @sum&#x3D;@m+@n;</span><br><span class="line">select @sum;</span><br></pre></td></tr></table></figure></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">## 存储过程和函数（类似方法）</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 含义：一组预先编译好的SQL语句的集合，理解为批处理语句</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 好处：</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 提高代码的重用性</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 简化操作</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 减少了编译次数并且减少了和数据库服务器连接的次数，提高了效率</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">### 创建语法</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create procedure 存储过程名(参数列表)(</span><br><span class="line">begin</span><br><span class="line">    存储过程体（一组合法的sql语句）</span><br><span class="line">end</span><br><span class="line">)</span><br></pre></td></tr></table></figure></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 注意</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 参数列表包含三部分</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 参数模式 <code>IN</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 参数名 <code>stuname</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 参数类型 <code>VARCHAR(20)</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 参数模式</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- <code>IN</code>：该参数可以作为输入，即需要调用传入值</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- <code>OUT</code>：作为输出，即可以作为返回值</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- <code>INOUT</code>：即需要传入值，又可以返回值</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 如果存储过程体仅仅只有一句话，begin end可以省略。存储过程体的每条SQL语句的结尾必须加分号。存储过程的结尾可以使用DELIMITER重新设置</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">- 语法：<code>DELIMITER 结束标记</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">### 调用语法</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left"><code>call 存储过程名（实参列表）;</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 <p>案例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select * from admin;</span><br><span class="line">delimiter $</span><br><span class="line">create procedure myp1()</span><br><span class="line">begin</span><br><span class="line">    insert into admin(username,&#39;password&#39;) values(&#39;john1&#39;,&#39;000&#39;,&#39;john2&#39;,&#39;000&#39;,&#39;john3&#39;,&#39;000&#39;,&#39;john4&#39;,&#39;000&#39;,&#39;john5&#39;,&#39;000&#39;);</span><br><span class="line">end $</span><br><span class="line">#调用</span><br><span class="line">call myp1()$</span><br></pre></td></tr></table></figure>
 <h4 id="创建带in模式参数的存储过程"><a href="#创建带in模式参数的存储过程" class="headerlink" title="创建带in模式参数的存储过程"></a>创建带in模式参数的存储过程</h4><p>案例1：创建存储过程实现：根据女神名，查询对应的男神信息   </p>
@@ -421,7 +552,7 @@ select @用户变量名:=值;</code> </li>
 <li>语法 <code>drop procedure 存储过程名</code><br><code>drop procedure p1;</code><br><code>drop procedure p2,p3;</code> × 不可以同时删除多个<h3 id="查看存储过程的信息"><a href="#查看存储过程的信息" class="headerlink" title="查看存储过程的信息"></a>查看存储过程的信息</h3><code>DESC myp2;</code>×<br><code>SHOW create procedure myp2;</code> √</li>
 </ul>
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p><em>与存储过程对比</em><br>存储过程：可以有0个返回，也可以有多个返回，适合做批量插入、批量更新<br>函数：有且仅有1个返回，适合做处理数据后返回一个结果</p>
-<h3 id="创建语法-1"><a href="#创建语法-1" class="headerlink" title="创建语法"></a>创建语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create function 函数名（参数列表） returns 返回类型</span><br><span class="line">begin</span><br><span class="line">    函数体</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h3 id="创建语法"><a href="#创建语法" class="headerlink" title="创建语法"></a>创建语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create function 函数名（参数列表） returns 返回类型</span><br><span class="line">begin</span><br><span class="line">    函数体</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <ul>
 <li>参数列表 包含两部分：参数名 参数类型</li>
 <li>函数体：肯定会有return语句，如果没有会报错，如果return语句没有放在函数体的最后也不报错，但没有意义<br>格式 <code>return 值;</code></li>
@@ -494,13 +625,13 @@ select @用户变量名:=值;</code> </li>
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/">【MySQL】06</a></p>
+        <p><span>本文标题:</span><a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/">【MySQL】【存储过程、函数】</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Amber Wang 的个人博客">Amber Wang</a></p>
         <p><span>发布时间:</span>2020年06月25日 - 17时01分</p>
-        <p><span>最后更新:</span>2020年04月01日 - 23时31分</p>
+        <p><span>最后更新:</span>2020年07月01日 - 17时59分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/" title="【MySQL】06">http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9106/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9106/　　作者: Amber Wang" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/" title="【MySQL】【存储过程、函数】">http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/　　作者: Amber Wang" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -511,18 +642,18 @@ select @用户变量名:=值;</code> </li>
 
 <nav id="article-nav">
   
-    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9104/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E9%A1%B5%E3%80%81%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E3%80%91%E3%80%90DML%20DDL%E3%80%91/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【MySQL】04
+          【MySQL】【分页、联合查询】【DML DDL】
         
       </div>
     </a>
   
   
-    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【MySQL】05</div>
+    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【MySQL】【约束、事务】</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -534,7 +665,7 @@ select @用户变量名:=值;</code> </li>
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">1.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统变量"><span class="toc-number">1.1.</span> <span class="toc-text">系统变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#全局变量-global"><span class="toc-number">1.1.1.</span> <span class="toc-text">全局变量  global</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#会话变量-session"><span class="toc-number">1.1.2.</span> <span class="toc-text">会话变量 session</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义变量"><span class="toc-number">1.2.</span> <span class="toc-text">自定义变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用户变量"><span class="toc-number">1.2.1.</span> <span class="toc-text">用户变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#局部变量"><span class="toc-number">1.2.2.</span> <span class="toc-text">局部变量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程和函数（类似方法）"><span class="toc-number">2.</span> <span class="toc-text">存储过程和函数（类似方法）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建语法"><span class="toc-number">2.1.</span> <span class="toc-text">创建语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用语法"><span class="toc-number">2.2.</span> <span class="toc-text">调用语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建带in模式参数的存储过程"><span class="toc-number">2.2.1.</span> <span class="toc-text">创建带in模式参数的存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带out模式参数的存储过程"><span class="toc-number">2.2.2.</span> <span class="toc-text">带out模式参数的存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带inout模式参数的存储过程"><span class="toc-number">2.2.3.</span> <span class="toc-text">带inout模式参数的存储过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除存储过程"><span class="toc-number">2.3.</span> <span class="toc-text">删除存储过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看存储过程的信息"><span class="toc-number">2.4.</span> <span class="toc-text">查看存储过程的信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-number">3.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建语法-1"><span class="toc-number">3.1.</span> <span class="toc-text">创建语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#无参有返回"><span class="toc-number">3.1.1.</span> <span class="toc-text">无参有返回</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有参有返回"><span class="toc-number">3.1.2.</span> <span class="toc-text">有参有返回</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看函数"><span class="toc-number">3.2.</span> <span class="toc-text">查看函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除函数"><span class="toc-number">3.3.</span> <span class="toc-text">删除函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程控制结构"><span class="toc-number">4.</span> <span class="toc-text">流程控制结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分支结构"><span class="toc-number">4.1.</span> <span class="toc-text">分支结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IF函数"><span class="toc-number">4.1.1.</span> <span class="toc-text">IF函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CASE结构"><span class="toc-number">4.1.2.</span> <span class="toc-text">CASE结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IF结构"><span class="toc-number">4.1.3.</span> <span class="toc-text">IF结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环结构"><span class="toc-number">4.2.</span> <span class="toc-text">循环结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#while"><span class="toc-number">4.2.1.</span> <span class="toc-text">while</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loop"><span class="toc-number">4.2.2.</span> <span class="toc-text">loop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#repeat"><span class="toc-number">4.2.3.</span> <span class="toc-text">repeat</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">1.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统变量"><span class="toc-number">1.1.</span> <span class="toc-text">系统变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#全局变量-global"><span class="toc-number">1.1.1.</span> <span class="toc-text">全局变量  global</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#会话变量-session"><span class="toc-number">1.1.2.</span> <span class="toc-text">会话变量 session</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义变量"><span class="toc-number">1.2.</span> <span class="toc-text">自定义变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用户变量"><span class="toc-number">1.2.1.</span> <span class="toc-text">用户变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#局部变量"><span class="toc-number">1.2.2.</span> <span class="toc-text">局部变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建带in模式参数的存储过程"><span class="toc-number">1.2.3.</span> <span class="toc-text">创建带in模式参数的存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带out模式参数的存储过程"><span class="toc-number">1.2.4.</span> <span class="toc-text">带out模式参数的存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带inout模式参数的存储过程"><span class="toc-number">1.2.5.</span> <span class="toc-text">带inout模式参数的存储过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除存储过程"><span class="toc-number">1.3.</span> <span class="toc-text">删除存储过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看存储过程的信息"><span class="toc-number">1.4.</span> <span class="toc-text">查看存储过程的信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-number">2.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建语法"><span class="toc-number">2.1.</span> <span class="toc-text">创建语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#无参有返回"><span class="toc-number">2.1.1.</span> <span class="toc-text">无参有返回</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有参有返回"><span class="toc-number">2.1.2.</span> <span class="toc-text">有参有返回</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看函数"><span class="toc-number">2.2.</span> <span class="toc-text">查看函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除函数"><span class="toc-number">2.3.</span> <span class="toc-text">删除函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程控制结构"><span class="toc-number">3.</span> <span class="toc-text">流程控制结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分支结构"><span class="toc-number">3.1.</span> <span class="toc-text">分支结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IF函数"><span class="toc-number">3.1.1.</span> <span class="toc-text">IF函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CASE结构"><span class="toc-number">3.1.2.</span> <span class="toc-text">CASE结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IF结构"><span class="toc-number">3.1.3.</span> <span class="toc-text">IF结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环结构"><span class="toc-number">3.2.</span> <span class="toc-text">循环结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#while"><span class="toc-number">3.2.1.</span> <span class="toc-text">while</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loop"><span class="toc-number">3.2.2.</span> <span class="toc-text">loop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#repeat"><span class="toc-number">3.2.3.</span> <span class="toc-text">repeat</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -607,18 +738,18 @@ select @用户变量名:=值;</code> </li>
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9104/" title="上一篇: 【MySQL】04">
+            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E9%A1%B5%E3%80%81%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E3%80%91%E3%80%90DML%20DDL%E3%80%91/" title="上一篇: 【MySQL】【分页、联合查询】【DML DDL】">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/" title="下一篇: 【MySQL】05">
+            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/" title="下一篇: 【MySQL】【约束、事务】">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9104/">【MySQL】04</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/">【MySQL】06</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/">【MySQL】05</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9103/">【MySQL】03</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9102/">【MySQL】02</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9101/">【MySQL】01</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E9%A1%B5%E3%80%81%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E3%80%91%E3%80%90DML%20DDL%E3%80%91/">【MySQL】【分页、联合查询】【DML DDL】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/">【MySQL】【存储过程、函数】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/">【MySQL】【约束、事务】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E8%BF%9E%E6%8E%A5%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【连接、子查询】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【分组查询】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【条件查询】</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 

@@ -7,17 +7,17 @@
   
   
   
-  <title>【MySQL】05 | AmberWang&#39;s World</title>
+  <title>【MySQL】【约束、事务】 | AmberWang&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常见约束 含义：一种限制，用于限制表中的数据，为了保证表中的数据的准确和可靠性。   分类：（六大约束） not null：非空，用于保证该字段的值不能为空 比如姓名、学号等   default: 默认，用于保证该字段有默认值 比如性别   primary key：主键，用于保证该字段的值具有唯一性，并且非空 比如学号、员工编号等   unique：唯一，用于保证该字段的值具有唯一性，可以为空">
+  <meta name="description" content="常见约束 含义：一种限制，用于限制表中的数据，为了保证表中的数据的准确和可靠性。   分类：（六大约束）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【MySQL】05">
-<meta property="og:url" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9105/index.html">
+<meta property="og:title" content="【MySQL】【约束、事务】">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/index.html">
 <meta property="og:site_name" content="AmberWang&#39;s World">
-<meta property="og:description" content="常见约束 含义：一种限制，用于限制表中的数据，为了保证表中的数据的准确和可靠性。   分类：（六大约束） not null：非空，用于保证该字段的值不能为空 比如姓名、学号等   default: 默认，用于保证该字段有默认值 比如性别   primary key：主键，用于保证该字段的值具有唯一性，并且非空 比如学号、员工编号等   unique：唯一，用于保证该字段的值具有唯一性，可以为空">
+<meta property="og:description" content="常见约束 含义：一种限制，用于限制表中的数据，为了保证表中的数据的准确和可靠性。   分类：（六大约束）">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-25T09:01:26.607Z">
-<meta property="article:modified_time" content="2020-03-31T13:07:08.013Z">
+<meta property="article:modified_time" content="2020-07-01T10:14:51.538Z">
 <meta property="article:author" content="Amber Wang">
 <meta name="twitter:card" content="summary">
   
@@ -268,10 +268,10 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-【MySQL】05" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-【MySQL】【约束、事务】" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/" class="article-date">
+      <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/" class="article-date">
       <time datetime="2020-06-25T09:01:26.607Z" itemprop="datePublished">2020-06-25</time>
 </a>
 
@@ -286,7 +286,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【MySQL】05
+      【MySQL】【约束、事务】
     </h1>
   
 
@@ -306,7 +306,8 @@
           
         <h3 id="常见约束"><a href="#常见约束" class="headerlink" title="常见约束"></a>常见约束</h3><ul>
 <li>含义：一种限制，用于限制表中的数据，为了保证表中的数据的准确和可靠性。  </li>
-<li>分类：（六大约束）<ul>
+<li>分类：（六大约束）<a id="more"></a>
+<ul>
 <li>not null：非空，用于保证该字段的值不能为空<ul>
 <li>比如姓名、学号等</li>
 </ul>
@@ -373,7 +374,32 @@
 <ul>
 <li>通用写法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table if not exists stuinfo(</span><br><span class="line">    id INT PRIMARY KEY,</span><br><span class="line">    stuname VARCHAR(20) NOT NULL,</span><br><span class="line">    sex CHAR(1),</span><br><span class="line">    age INT DEFAULT 18,</span><br><span class="line">    seat INT UNIQUE,</span><br><span class="line">    majorid INT,</span><br><span class="line">    CONSTRAIT fk_stuinfo_major FOREIGN KEY(majorid) REFERENCES major(id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p><em>主键和唯一的对比</em><br>| - | 保证唯一性 | 是否允许为空 | 一个表中可以有多少个null| 是否允许组合|<br>| :—–| :—-: | :—-: |:—-: |:—-: |<br>| 主键 | √ | × |至多有1个（？） | √，但不推荐|<br>| 唯一 | √ | √ |可以有多个|√，但不推荐 |</p>
+<p><em>主键和唯一的对比</em></p>
+<table>
+<thead>
+<tr>
+<th align="left">-</th>
+<th align="center">保证唯一性</th>
+<th align="center">是否允许为空</th>
+<th align="center">一个表中可以有多少个null</th>
+<th align="center">是否允许组合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">主键</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">至多有1个（？）</td>
+<td align="center">√，但不推荐</td>
+</tr>
+<tr>
+<td align="left">唯一</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">可以有多个</td>
+<td align="center">√，但不推荐</td>
+</tr>
+</tbody></table>
 <ul>
 <li>外键<ul>
 <li>要求在从表设置外键关系</li>
@@ -566,13 +592,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/">【MySQL】05</a></p>
+        <p><span>本文标题:</span><a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/">【MySQL】【约束、事务】</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Amber Wang 的个人博客">Amber Wang</a></p>
         <p><span>发布时间:</span>2020年06月25日 - 17时01分</p>
-        <p><span>最后更新:</span>2020年03月31日 - 21时07分</p>
+        <p><span>最后更新:</span>2020年07月01日 - 18时14分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/" title="【MySQL】05">http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9105/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9105/　　作者: Amber Wang" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/" title="【MySQL】【约束、事务】">http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/　　作者: Amber Wang" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -583,18 +609,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【MySQL】06
+          【MySQL】【存储过程、函数】
         
       </div>
     </a>
   
   
-    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9103/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【MySQL】03</div>
+    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E8%BF%9E%E6%8E%A5%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【MySQL】【连接、子查询】</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -679,18 +705,18 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/" title="上一篇: 【MySQL】06">
+            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/" title="上一篇: 【MySQL】【存储过程、函数】">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9103/" title="下一篇: 【MySQL】03">
+            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E8%BF%9E%E6%8E%A5%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%91/" title="下一篇: 【MySQL】【连接、子查询】">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9104/">【MySQL】04</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/">【MySQL】06</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/">【MySQL】05</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9103/">【MySQL】03</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9102/">【MySQL】02</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9101/">【MySQL】01</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E9%A1%B5%E3%80%81%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E3%80%91%E3%80%90DML%20DDL%E3%80%91/">【MySQL】【分页、联合查询】【DML DDL】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/">【MySQL】【存储过程、函数】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/">【MySQL】【约束、事务】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E8%BF%9E%E6%8E%A5%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【连接、子查询】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【分组查询】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【条件查询】</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 

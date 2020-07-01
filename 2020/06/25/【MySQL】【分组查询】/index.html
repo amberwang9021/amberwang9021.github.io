@@ -7,21 +7,21 @@
   
   
   
-  <title>【MySQL】02 | AmberWang&#39;s World</title>
+  <title>【MySQL】【分组查询】 | AmberWang&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="排序查询语法 1234select 查询列表from 表[where 筛选条件]order by 排序列表 [asc|desc] 特点  asc 升序 desc 降序 如果不写，默认升序 order by 子句中支持单个字段、多个字段、表达式、函数、别名 order by 一般放在查询语句的最后面，limit子句除外  案例1：查询员工信息，要求工资从高到低排序select * from empl">
+  <meta name="description" content="常见函数单行函数调用：select 函数名（实参列表） 【from 表】">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【MySQL】02">
-<meta property="og:url" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9102/index.html">
+<meta property="og:title" content="【MySQL】【分组查询】">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/index.html">
 <meta property="og:site_name" content="AmberWang&#39;s World">
-<meta property="og:description" content="排序查询语法 1234select 查询列表from 表[where 筛选条件]order by 排序列表 [asc|desc] 特点  asc 升序 desc 降序 如果不写，默认升序 order by 子句中支持单个字段、多个字段、表达式、函数、别名 order by 一般放在查询语句的最后面，limit子句除外  案例1：查询员工信息，要求工资从高到低排序select * from empl">
+<meta property="og:description" content="常见函数单行函数调用：select 函数名（实参列表） 【from 表】">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9102/catch1.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/catch1.png">
 <meta property="article:published_time" content="2020-06-25T09:01:26.589Z">
-<meta property="article:modified_time" content="2020-03-28T08:21:14.527Z">
+<meta property="article:modified_time" content="2020-07-01T09:13:34.447Z">
 <meta property="article:author" content="Amber Wang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9102/catch1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/catch1.png">
   
     <link rel="alternative" href="/atom.xml" title="AmberWang&#39;s World" type="application/atom+xml">
   
@@ -270,10 +270,10 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-【MySQL】02" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-【MySQL】【分组查询】" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9102/" class="article-date">
+      <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/" class="article-date">
       <time datetime="2020-06-25T09:01:26.589Z" itemprop="datePublished">2020-06-25</time>
 </a>
 
@@ -288,7 +288,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【MySQL】02
+      【MySQL】【分组查询】
     </h1>
   
 
@@ -306,69 +306,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h3><p>语法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select 查询列表</span><br><span class="line">from 表</span><br><span class="line">[where 筛选条件]</span><br><span class="line">order by 排序列表 [asc|desc]</span><br></pre></td></tr></table></figure>
-<p><strong>特点</strong></p>
-<ul>
-<li>asc 升序 desc 降序 如果不写，默认升序</li>
-<li>order by 子句中支持单个字段、多个字段、表达式、函数、别名</li>
-<li>order by 一般放在查询语句的最后面，limit子句除外</li>
-</ul>
-<p>案例1：查询员工信息，要求工资从高到低排序<br><code>select * from employees order by salary desc;</code><br>从低到高<br><code>select * from employees order by salary asc;</code></p>
-<p>案例2：查询部门编号&gt;=90的员工信息，按入职时间的先后进行排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select </span><br><span class="line">    *</span><br><span class="line">from </span><br><span class="line">    employees</span><br><span class="line">where</span><br><span class="line">    department_id &gt;&#x3D; 90</span><br><span class="line">order by</span><br><span class="line">    hiredate asc</span><br></pre></td></tr></table></figure>
-<p>案例3：按年薪的高低显示员工的信息和年薪【按表达式排序】</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select *,salary*12*(1+IFNULL(commission_pct,0)) 年薪</span><br><span class="line">from employees</span><br><span class="line">order by salary*12(1+IFNULL(commission_pct,0)) DESC;</span><br></pre></td></tr></table></figure>
-<p>案例4：按年薪的高低显示员工的信息和年薪【别名】</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select *,salary*12*(1+IFNULL(commission_pct,0)) 年薪</span><br><span class="line">from employees</span><br><span class="line">order by 年薪 DESC;</span><br></pre></td></tr></table></figure>
-<p>案例5：按姓名的长度显示员工的姓名和工资【按函数排序】</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select LENGTH(last_name) 字节长度,last_name,salary</span><br><span class="line">from employees</span><br><span class="line">order by length(last_name) DESC;</span><br></pre></td></tr></table></figure>
-<p>案例6：查询员工信息，要求先按工资排序，再按员工编号排序【按多个字段排序】</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">selet *</span><br><span class="line">from employees</span><br><span class="line">order by salary ASC,employee_id DESC;</span><br></pre></td></tr></table></figure>
-
-<h2 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h2><h3 id="单行函数"><a href="#单行函数" class="headerlink" title="单行函数"></a>单行函数</h3><p>调用：<br><strong>select 函数名（实参列表） 【from 表】</strong><br>分类：</p>
+        <h2 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h2><h3 id="单行函数"><a href="#单行函数" class="headerlink" title="单行函数"></a>单行函数</h3><p>调用：<br><strong>select 函数名（实参列表） 【from 表】</strong>  </p>
+<a id="more"></a>
+<p>分类：</p>
 <ul>
 <li>单行函数 如 concat、length、ifnull等</li>
-<li>分组函数 功能：做统计使用，又称统计函数、聚合函数、组函数  <h4 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h4></li>
-<li>length 获取参数值的字节个数<br><code>select length(&#39;john&#39;)</code><br><code>select length(&#39;张三丰hahaha&#39;)</code><br>一个中文字符占三个字节 UTF8</li>
-<li>concat 拼接字符串<br><code>select concat(last_name,&#39;_&#39;,first_name) from employees</code></li>
-<li>upper、lower 变大小写<br><code>select upper(&#39;john&#39;);</code></li>
-<li>substr、substring  </li>
+<li>分组函数 功能：做统计使用，又称统计函数、聚合函数、组函数  <h4 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h4>length 获取参数值的字节个数<br><code>select length(&#39;john&#39;)</code><br><code>select length(&#39;张三丰hahaha&#39;)</code><br>一个中文字符占三个字节 UTF8<br>concat 拼接字符串<br><code>select concat(last_name,&#39;_&#39;,first_name) from employees</code><br>upper、lower 变大小写<br><code>select upper(&#39;john&#39;);</code><br>substr、substring  </li>
 </ul>
 <p><strong>注意：索引从1开始</strong><br><code>select substr(&#39;李莫愁爱上&#39;,4) out_put;</code><br><strong>截取从指定索引处指定字符长度的字符</strong><br><code>select substr(&#39;李莫愁爱上&#39;,1,3) out_put;</code></p>
 <p>案例：姓名中首字符大写，其他字符小写然后用_拼接，显示出来  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select </span><br><span class="line">    concat(upper(substr(last_name,1,1)),&#39;_&#39;,lower(substr(last_name,2))) out_put</span><br><span class="line">from </span><br><span class="line">    employees;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>instr<br>返回子串第一次出现的索引，如果找不到返回0<br><code>select instr(&#39;杨不悔爱上了殷六侠&#39;,&#39;殷六侠&#39;) as out_put;</code></p>
-</li>
-<li><p>trim<br>去掉前后字符<br><code>select length(trim(&#39;    张翠山    &#39;)) as out_put;</code><br><code>select trim(&#39;a&#39; from &#39;aaa张aaa翠山aaa&#39;) as out_put;</code></p>
-</li>
-<li><p>lpad<br>用指定的字符实现左填充指定长度，其中长度为总长度<br><code>select LPAD(&#39;殷素素&#39;,10,&#39;*&#39;) as out_put;</code></p>
-</li>
-<li><p>rpad<br>用指定的字符实现右填充指定长度，其中长度为总长度<br><code>select LPAD(&#39;殷素素&#39;,12,&#39;ab&#39;) as out_put;</code></p>
-</li>
-<li><p>replace 替换<br><code>select replace(&#39;张无忌爱上了周芷若&#39;,&#39;周芷若&#39;,&#39;赵敏&#39;) as out_put;</code></p>
-</li>
-</ul>
-<h4 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h4><ul>
-<li>round 四舍五入<br><code>select round(-1.55);# 先去符号再取值</code><br><code>select round(1.567,2); # 取小数点后两位</code>  </li>
-<li>ceil 向上取整，返回&gt;=该参数的最小整数  </li>
-<li>floor 向下取值，返回&lt;=该参数的最大整数  </li>
-<li>truncate 截断<br><code>select truncate(1.699,1);</code> #取小数点后一位  </li>
-<li>mod 取余  </li>
-</ul>
-<p><strong>注意：mod(a,b):  a-a/b*b</strong><br><code>-select MOD(10,-3);</code> #被除数为正，结果为正<br><code>-select 10%3</code></p>
-<h4 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h4><ul>
-<li>now 返回当前系统日期+时间<br><code>select now();</code>  </li>
-<li>curdate 返回当前系统日期，不包含时间<br><code>select curdate();</code>  </li>
-<li>curtime 返回当前时间，不包含日期<br><code>select curtime();</code>  </li>
-<li>可以获取指定的部分，年、月、日、小时、分钟、秒<br><code>select year(now()) 年;</code><br><code>select year(hiredate) 年 from employees;</code></li>
-<li>str_to_data 将字符串通过指定的格式转换为日期<br><code>select str_to_data(&#39;1992-3-2&#39;,&#39;%Y-%c-%d&#39;) as out_put;</code><br><img src="catch1.png" alt="字符含义"></li>
-<li>date_format 将日期转换为字符<br><code>select data_format(now(),&#39;%y年%m月%d日&#39;) as out_put;</code>  <h4 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h4><code>select version();</code><br><code>select database();</code><h4 id="流程控制函数"><a href="#流程控制函数" class="headerlink" title="流程控制函数"></a>流程控制函数</h4></li>
-<li>if 函数<br><code>select if(10&gt;5,&#39;大&#39;,&#39;小&#39;)</code><br><code>select last_name,commission_pct,IF(commission_pct IS NULL,&#39;没奖金，呵呵&#39;,&#39;有奖金，嘻嘻&#39;) 备注</code>  </li>
-<li>case 函数  </li>
-</ul>
-<p><strong>使用1： switch case 的效果</strong> </p>
+<p>instr<br>返回子串第一次出现的索引，如果找不到返回0<br><code>select instr(&#39;杨不悔爱上了殷六侠&#39;,&#39;殷六侠&#39;) as out_put;</code><br>trim<br>去掉前后字符<br><code>select length(trim(&#39;    张翠山    &#39;)) as out_put;</code><br><code>select trim(&#39;a&#39; from &#39;aaa张aaa翠山aaa&#39;) as out_put;</code></p>
+<p>lpad<br>用指定的字符实现左填充指定长度，其中长度为总长度<br><code>select LPAD(&#39;殷素素&#39;,10,&#39;*&#39;) as out_put;</code></p>
+<p>rpad<br>用指定的字符实现右填充指定长度，其中长度为总长度<br><code>select LPAD(&#39;殷素素&#39;,12,&#39;ab&#39;) as out_put;</code></p>
+<p>replace 替换<br><code>select replace(&#39;张无忌爱上了周芷若&#39;,&#39;周芷若&#39;,&#39;赵敏&#39;) as out_put;</code></p>
+<h4 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h4><p>round 四舍五入<br><code>select round(-1.55);# 先去符号再取值</code><br><code>select round(1.567,2); # 取小数点后两位</code><br>ceil 向上取整，返回&gt;=该参数的最小整数<br>floor 向下取值，返回&lt;=该参数的最大整数<br>truncate 截断<br><code>select truncate(1.699,1);</code> #取小数点后一位<br>mod 取余<br><strong>注意：mod(a,b):  a-a/b*b</strong><br><code>select MOD(10,-3);</code> #被除数为正，结果为正<br><code>select 10%3</code></p>
+<h4 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h4><p>now 返回当前系统日期+时间<br><code>select now();</code><br>curdate 返回当前系统日期，不包含时间<br><code>select curdate();</code><br>curtime 返回当前时间，不包含日期<br><code>select curtime();</code><br>可以获取指定的部分，年、月、日、小时、分钟、秒<br><code>select year(now()) 年;</code><br><code>select year(hiredate) 年 from employees;</code><br>str_to_data 将字符串通过指定的格式转换为日期<br><code>select str_to_data(&#39;1992-3-2&#39;,&#39;%Y-%c-%d&#39;) as out_put;</code><br><img src="catch1.png" alt="字符含义"><br>date_format 将日期转换为字符<br><code>select data_format(now(),&#39;%y年%m月%d日&#39;) as out_put;</code>  </p>
+<h4 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h4><p><code>select version();</code><br><code>select database();</code></p>
+<h4 id="流程控制函数"><a href="#流程控制函数" class="headerlink" title="流程控制函数"></a>流程控制函数</h4><p>if 函数<br><code>select if(10&gt;5,&#39;大&#39;,&#39;小&#39;)</code><br><code>select last_name,commission_pct,IF(commission_pct IS NULL,&#39;没奖金，呵呵&#39;,&#39;有奖金，嘻嘻&#39;) 备注</code><br>case 函数<br><strong>使用1： switch case 的效果</strong> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">switch(变量或表达式)&#123;</span><br><span class="line">    case 常量1: 语句1; break;</span><br><span class="line">    ...</span><br><span class="line">    default:语句n; break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>mysql中  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">case 要判断的字段或表达式  </span><br><span class="line">when 常量1 then 要显示的值1或语句1  </span><br><span class="line">when 常量2 then 要显示的值2或语句2  </span><br><span class="line">...  </span><br><span class="line">else 要显示的值n或语句n</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
@@ -376,12 +331,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select salary 原始工资, deparment_id,</span><br><span class="line">case deparment_id </span><br><span class="line">when 30 then salary*1.1  </span><br><span class="line">when 40 then salary*1.2</span><br><span class="line">when 50 then salary*1.3  </span><br><span class="line">else salary</span><br><span class="line">end as 新工资</span><br><span class="line">from employees;</span><br></pre></td></tr></table></figure>
 <p><strong>使用2：类似于多重if</strong>  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">case </span><br><span class="line">when 条件1 then 要显示的值1或语句1  </span><br><span class="line">when 条件2 then 要显示的值2或语句2  </span><br><span class="line">...  </span><br><span class="line">else 要显示的值n或语句n</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<h3 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h3><p>用作统计使用，又称为聚合函数或统计函数或组函数<br>分类：<br>sum 求和 、avg 平均值、 max 最大值、 min 最小值、 count 计算个数  </p>
-<ul>
-<li>简单使用<br><code>select sum(salary) from employees;</code></li>
-<li>参数支持哪些类型  </li>
-</ul>
-<p><strong>特点</strong>   </p>
+<h3 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h3><p>用作统计使用，又称为聚合函数或统计函数或组函数<br>分类：<br>sum 求和 、avg 平均值、 max 最大值、 min 最小值、 count 计算个数<br>简单使用<br><code>select sum(salary) from employees;</code><br>参数支持哪些类型<br><strong>特点</strong>   </p>
 <ol>
 <li>sum、avg只用于处理数值型  </li>
 <li>min max count 可以处理任何类型  </li>
@@ -393,7 +343,30 @@ from employees;</code></li>
 </ol>
 <h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><p>语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select 分组函数，列（要求出现在group by的后面）</span><br><span class="line">from 表</span><br><span class="line">【where 筛选条件】</span><br><span class="line">group by 分组的列表</span><br><span class="line">【order by 子句】</span><br></pre></td></tr></table></figure>
-<p>注意：查询列表必须特殊，要求是分组函数和group by后出现的字段<br>特点：1、分组查询中的筛选条件分为两类<br>| - | 数据源 | 位置 | 关键字|<br>| :—–| :—-: | :—-: |:—-: |<br>| 分组前筛选 | 原始表 | group by子句的前面 |where |<br>| 分组后筛选 | 分组后的结果集 | group by子句的后面 |having |<br><strong>①分组函数做条件肯定放在having子句中</strong><br><strong>②能用分组前筛选的，优先考虑使用分组前筛选</strong><br>2、group by子句支持单个字段、多个字段分组，表达式或函数（用得较少）<br>3、也可以添加排序（放在最后）<br>案例1：查询每个工种的最高工资  </p>
+<p>注意：查询列表必须特殊，要求是分组函数和group by后出现的字段<br>特点：1、分组查询中的筛选条件分为两类  </p>
+<table>
+<thead>
+<tr>
+<th align="left">-</th>
+<th align="center">数据源</th>
+<th align="center">位置</th>
+<th align="center">关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">分组前筛选</td>
+<td align="center">原始表</td>
+<td align="center">group by子句的前面</td>
+<td align="center">where</td>
+</tr>
+<tr>
+<td align="left">分组后筛选</td>
+<td align="center">分组后的结果集</td>
+<td align="center">group by子句的后面</td>
+<td align="center">having</td>
+</tr>
+</tbody></table>
+<p><strong>①分组函数做条件肯定放在having子句中</strong><br><strong>②能用分组前筛选的，优先考虑使用分组前筛选</strong><br>2、group by子句支持单个字段、多个字段分组，表达式或函数（用得较少）<br>3、也可以添加排序（放在最后）<br>案例1：查询每个工种的最高工资  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select max(salary),job_id</span><br><span class="line">from employees</span><br><span class="line">group by job_id;</span><br></pre></td></tr></table></figure>
 <p>添加分组后的筛选<br>案例2：<br>① 查询每个部门的员工个数  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select count(*),department_id</span><br><span class="line">from employees</span><br><span class="line">group by department_id;</span><br></pre></td></tr></table></figure>
@@ -412,13 +385,13 @@ from employees;</code></li>
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9102/">【MySQL】02</a></p>
+        <p><span>本文标题:</span><a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【分组查询】</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Amber Wang 的个人博客">Amber Wang</a></p>
         <p><span>发布时间:</span>2020年06月25日 - 17时01分</p>
-        <p><span>最后更新:</span>2020年03月28日 - 16时21分</p>
+        <p><span>最后更新:</span>2020年07月01日 - 17时13分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/06/25/%E3%80%90MySQL%E3%80%9102/" title="【MySQL】02">http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9102/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%9102/　　作者: Amber Wang" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/" title="【MySQL】【分组查询】">http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/　　作者: Amber Wang" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -429,18 +402,18 @@ from employees;</code></li>
 
 <nav id="article-nav">
   
-    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9103/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E8%BF%9E%E6%8E%A5%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%91/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【MySQL】03
+          【MySQL】【连接、子查询】
         
       </div>
     </a>
   
   
-    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9101/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【MySQL】01</div>
+    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2%E3%80%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【MySQL】【条件查询】</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -452,7 +425,7 @@ from employees;</code></li>
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#排序查询"><span class="toc-number">1.</span> <span class="toc-text">排序查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见函数"><span class="toc-number"></span> <span class="toc-text">常见函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单行函数"><span class="toc-number">1.</span> <span class="toc-text">单行函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字符函数"><span class="toc-number">1.1.</span> <span class="toc-text">字符函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数学函数"><span class="toc-number">1.2.</span> <span class="toc-text">数学函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#日期函数"><span class="toc-number">1.3.</span> <span class="toc-text">日期函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他函数"><span class="toc-number">1.4.</span> <span class="toc-text">其他函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流程控制函数"><span class="toc-number">1.5.</span> <span class="toc-text">流程控制函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分组函数"><span class="toc-number">2.</span> <span class="toc-text">分组函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分组查询"><span class="toc-number">3.</span> <span class="toc-text">分组查询</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常见函数"><span class="toc-number">1.</span> <span class="toc-text">常见函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单行函数"><span class="toc-number">1.1.</span> <span class="toc-text">单行函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字符函数"><span class="toc-number">1.1.1.</span> <span class="toc-text">字符函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数学函数"><span class="toc-number">1.1.2.</span> <span class="toc-text">数学函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#日期函数"><span class="toc-number">1.1.3.</span> <span class="toc-text">日期函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他函数"><span class="toc-number">1.1.4.</span> <span class="toc-text">其他函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流程控制函数"><span class="toc-number">1.1.5.</span> <span class="toc-text">流程控制函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分组函数"><span class="toc-number">1.2.</span> <span class="toc-text">分组函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分组查询"><span class="toc-number">1.3.</span> <span class="toc-text">分组查询</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -525,18 +498,18 @@ from employees;</code></li>
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9103/" title="上一篇: 【MySQL】03">
+            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E8%BF%9E%E6%8E%A5%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%91/" title="上一篇: 【MySQL】【连接、子查询】">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%9101/" title="下一篇: 【MySQL】01">
+            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2%E3%80%91/" title="下一篇: 【MySQL】【条件查询】">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9104/">【MySQL】04</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9106/">【MySQL】06</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9105/">【MySQL】05</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9103/">【MySQL】03</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9102/">【MySQL】02</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%9101/">【MySQL】01</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E9%A1%B5%E3%80%81%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E3%80%91%E3%80%90DML%20DDL%E3%80%91/">【MySQL】【分页、联合查询】【DML DDL】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/">【MySQL】【存储过程、函数】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/">【MySQL】【约束、事务】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E8%BF%9E%E6%8E%A5%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【连接、子查询】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【分组查询】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【条件查询】</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
