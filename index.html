@@ -296,55 +296,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>向现有的对象添加新的功能，同时又不改变它的结构。<br>用法实例：</p>
+              <h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>向现有的对象添加新的功能，同时又不改变它的结构。<br>用法实例：</p>
 <ul>
 <li>身份验证</li>
 <li>日志记录</li>
 <li>输入合理性检查</li>
-<li>缓存</li>
+<li>缓存  </li>
 </ul>
-<p>输入任意数量和类型的参数：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def my_decorator(func):</span><br><span class="line">    def wrapper(*args,**kwargs):</span><br><span class="line">        print(&#39;wrapper of decorator&#39;)</span><br><span class="line">        print(*args,**kwargs)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@my_decorator</span><br><span class="line">def greet(message):</span><br><span class="line">    print(message)</span><br><span class="line"></span><br><span class="line">greet(&#39;hello world&#39;)</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line"></span><br><span class="line">类也可以作为装饰器。类装饰器主要依赖于函数__call__()，每次你调用一个类的实例时，函数__call__()就会被执行一次。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">（一）身份认证  </span><br><span class="line">例如每次发表评论前，都需要进行是否登录的验证，如果登录，则可以正常发表评论；如果未登录，则抛出异常</span><br></pre></td></tr></table></figure>
-<p>import functools<br>def authenticate(func):<br>    @functools.wraps(func)<br>    def wrapper(<em>args,*</em>kwargs):<br>        request = args[0]<br>        if check_user_logged_in(request):<br>            return func(<em>args,*</em>kwargs)<br>        else:<br>            raise Exception(‘Authentication failed’)<br>    return wrapper</p>
-<p>@authenticate<br>def post_comment(request,…)<br>    …</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">（二）日志记录  </span><br><span class="line">比如需要记录某个函数的运行时间</span><br></pre></td></tr></table></figure>
-<p>import time<br>import functools</p>
-<p>def log_execution_time(func):<br>    @functools.wraps(func)<br>    def wrapper(<em>args,*</em>kwargs):<br>        start = time.perf_counter()<br>        res = func(<em>args,*</em>kwargs)<br>        end = time.perf_counter()<br>        print(‘{} took {}’.format(func.<strong>name</strong>,(end-start)))<br>        return res<br>    return wrapper</p>
-<p>@log_execution_time<br>def calculate_similarity(items):<br>    …</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">（三）输入合理性检查  </span><br><span class="line">可以利用装饰器对输入进行合理性检查，降低输入不正确造成的时间成本的浪费。</span><br></pre></td></tr></table></figure>
-<p>import functools<br>def validation_check(input):<br>    @functools.wraps(func)<br>    def wrapper(<em>args,*</em>kwargs):<br>        …#检查输入是否合法</p>
-<p>@validation_check()<br>def neural_network_training(,,):<br>    …</p>
-<p>```</p>
-<p>(四) 缓存<br>LRU即删除最久没有访问的内容<br><code>@lru_cache</code></p>
-<h3 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h3><ul>
-<li>浅拷贝<br>是指重新分配一块内存，创建一个新的对象，里面的元素是原对象中子对象的引用。  </li>
-<li>深拷贝<br>是指重新分配一块内存，创建一个新的对象，并且将原对象中的元素，以递归的方式，通过创建新的子对象拷贝到新对象中。</li>
-</ul>
-<h3 id="Python协程"><a href="#Python协程" class="headerlink" title="Python协程"></a>Python协程</h3><p>协程是实现并发编程的一种方式。<br>对操作系统而言，线程是最小的执行单元，进程是最小的资源管理单元。无论是进程还是线程，都是由操作系统所管理的。</p>
-<p>协程与多线程的区别：  </p>
-<ul>
-<li>协程是单线程  </li>
-<li>协程由用户决定，在哪些地方交出控制权，切换到下一个任务  </li>
-</ul>
-<p>协程的写法更加简洁清晰，把async/await语法和create_task结合来用，对于中小级别的并发需求已经毫无压力。</p>
-<h3 id="GIL-全局解释器"><a href="#GIL-全局解释器" class="headerlink" title="GIL 全局解释器"></a>GIL 全局解释器</h3><p>GIL（Global Interpreter Lock）全局解释器锁  </p>
-<ul>
-<li>作用<br>每一个Python线程，在Cpython解释器中执行时，都会先锁住自己的线程，阻止别的线程执行。  </li>
-<li>原因  <ul>
-<li>设计者为了规避类似于内存管理这样的复杂的竞争风险问题  </li>
-<li>Cpython大量使用C语言库，但大部分C语言库都不是原生线程安全的（线程安全会降低性能和增加复杂度）  </li>
-</ul>
-</li>
-</ul>
-<h3 id="Python垃圾回收机制"><a href="#Python垃圾回收机制" class="headerlink" title="Python垃圾回收机制"></a>Python垃圾回收机制</h3><p>计数引用<br>当这个对象的引用计数（指针数）为0的时候，说明这个对象永远不可达，则被回收。<br>当引用计数为0时，会启用垃圾回收机制，还有别的情况时会启动垃圾回收吗？  </p>
-<ul>
-<li>针对循环引用的自动垃圾回收  <ul>
-<li>标记清除（mark-sweep）算法  </li>
-<li>分代收集（generational）</li>
-</ul>
-</li>
-</ul>
-
+          
       
     </div>
     
@@ -353,6 +312,10 @@
       
 
       
+      
+        <p class="article-more-link">
+          <a   href="/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -401,7 +364,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="【python】爬虫"><a href="#【python】爬虫" class="headerlink" title="【python】爬虫"></a>【python】爬虫</h2><h3 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h3><p>（一）requests请求方式  </p>
+              <h2 id="【python】爬虫"><a href="#【python】爬虫" class="headerlink" title="【python】爬虫"></a>【python】爬虫</h2><h3 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h3><p>（一）requests请求方式  </p>
 <ul>
 <li>get </li>
 <li>post </li>
@@ -410,72 +373,7 @@
 <li>head </li>
 <li>options  </li>
 </ul>
-<p>1 get请求<br>requests.get(url)  </p>
-<p>2 post请求<br>requests.post(url, data={请求体的字典}  </p>
-<p>（二） response方法<br>获取网页的解码字符串</p>
-<p>1 response.text<br>获取网页的HTML字符串<br>出现乱码使用 response.encoding = ‘utf-8’</p>
-<p>2 response.content.decode()<br>也可以获得网页正确解码之后的字符串</p>
-<p>3 获取其他属性<br>response = requests.get(‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a>)<br>获取请求头  response.request.headers<br>（如何获取请求头：<br>刷新网页-&gt;点击network-&gt;点击Doc-&gt;点击Headers-&gt;查看Reaquest Headers的User-Agent字段，直接复制<br>-&gt;将刚才复制的User-Agent字段构造成字典形式）</p>
-<p>获取响应头  response.headers<br>获取响应cookies response.cookies<br>获取请求url response.request.url<br>获取响应url response.url<br>获取内容<br>requests.text<br>是现成的字符串，但有时会显示异常，需要.content手动编码<br>requests.content<br>存的是字节码<br>经常使用requests.content.decode(‘utf-8’) </p>
-<h2 id="【Beautiful-Soup】"><a href="#【Beautiful-Soup】" class="headerlink" title="【Beautiful Soup】"></a>【Beautiful Soup】</h2><p>作用：可以从HTML或XML文件中提取数据的Python库<br>使用方式：from bs4 import BeautifulSoup<br>（一）解析库<br>| 解析器 | 使用方法 | 优势 | 劣势 |<br>| :—–| :—-: | :—-: |:—-:|<br>| Python标准库 | BeautifulSoup(markup,’html.parser’) | python内置标准库、执行速度适中、文档容错能力强 |Python 2.7.3 or 3.2.2)前的版本中文容错能力差 |<br>| lxml HTML解析器 | BeautifulSoup(markup,’lxml’) | 速度快、文档容错能力强 |需要安装C语言库|<br>| lxml XML解析器 | BeautifulSoup(markup,’xml’) | 速度快、唯一支持XML的解析器 |需要安装C语言库|<br>| html5lib | BeautifulSoup(markup,’html5lib’) | 最好的容错性、以浏览器的方式解析文档、生成H5格式的文档 |速度慢、不依赖外部扩展|  </p>
-<p>（二）基本使用<br>html = </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#39;s story&lt;&#x2F;title&gt;&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;title&quot; name&#x3D;&quot;dromouse&quot;&gt;&lt;b&gt;The Dormouse&#39;s story&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;example.com&#x2F;elsie&quot; class&#x3D;&quot;sister&quot; id&#x3D;&quot;link1&quot;&gt;Elsie&lt;&#x2F;a&gt;,</span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;example.com&#x2F;lacie&quot; class&#x3D;&quot;sister&quot; id&#x3D;&quot;link2&quot;&gt;Lacie&lt;&#x2F;a&gt; and</span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;example.com&#x2F;tillie&quot; class&#x3D;&quot;sister&quot; id&#x3D;&quot;link3&quot;&gt;Tillie&lt;&#x2F;a&gt;;</span><br><span class="line">and they lived at the bottom of a well.&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;story&quot;&gt;...&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
-<p>显示为：  </p>
-<html><head><title>The Dormouse's story</title><meta name="generator" content="Hexo 4.2.1"></head>
-<body>
-<p class="title" name="dromouse"><b>The Dormouse's story</b></p>
-<p class="story">Once upon a time there were three little sisters; and their names were
-<a href="http://example.com/elsie" target="_blank" rel="noopener" class="sister" id="link1">Elsie</a>,
-<a href="http://example.com/lacie" target="_blank" rel="noopener" class="sister" id="link2">Lacie</a> and
-<a href="http://examples.com/tillie" target="_blank" rel="noopener" class="sister" id="link3">Tillie</a>;
-and they lived at the bottom of a well.</p>
-<p class="story">...</p>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup &#x3D; BeautifulSoup(html, &#39;lxml&#39;)</span><br><span class="line">print(soup.prettify())</span><br></pre></td></tr></table></figure>
-
-<p>（三）标签选择器  </p>
-<ul>
-<li>选择元素<br>soup.title<br>soup.head<br>soup.p  </li>
-<li>获取名称<br>soup.title.name</li>
-<li>获取属性<br>soup.p.sttrs[‘name’]<br>soup.p[‘name’]</li>
-<li>获取内容<br>soup.p.string</li>
-<li>嵌套选择<br>soup.head.title.string</li>
-<li>子节点和子孙节点<br>soup.p.contents</li>
-<li>父节点和祖先节点<br>soup.a.parent<br>list(enumerate(soup.a.parents))</li>
-<li>兄弟节点<br>list(enumerate(soup.a.next_siblings))<br>list(enumerate(soup.a.previos_siblings))  </li>
-</ul>
-<p>（四）标准选择器  </p>
-<ul>
-<li><p>find_all(name, attrs, recursive, text, **kwargs)<br>可以根据标签名、属性、内容查找文档<br><code>soup.find_all(&#39;ul&#39;)</code><br><code>soup.find_all(attrs={&#39;id&#39;:&#39;list-1&#39;})</code><br><code>soup.find_all(attrs={&#39;name&#39;:&#39;elements&#39;}</code><br><code>soup.find_all(id=&#39;list-1&#39;)</code><br><code>soup.find_all(class_=&#39;element&#39;)</code><br><code>soup.find_all(text=&#39;Foo&#39;)</code>  </p>
-</li>
-<li><p>find(name, attrs, recursive, text, **kwargs)</p>
-</li>
-<li><p>find_parants() find_parant()<br>寻找父节点</p>
-</li>
-<li><p>find_next_siblings() find_next_sibling()<br>寻找兄弟节点  </p>
-</li>
-<li><p>find_previous_siblings() find_previous_sibing()</p>
-</li>
-<li><p>find_all_next() find_next()</p>
-</li>
-<li><p>find_all_previous() find_previous  </p>
-</li>
-</ul>
-<p>（五） CSS选择器  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">html&#x3D;&#39;&#39;&#39;</span><br><span class="line">&lt;div class&#x3D;&quot;panel&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;panel-heading&quot;&gt;</span><br><span class="line">        &lt;h4&gt;Hello&lt;&#x2F;h4&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;panel-body&quot;&gt;</span><br><span class="line">        &lt;ul class&#x3D;&quot;list&quot; id&#x3D;&quot;list-1&quot;&gt;</span><br><span class="line">            &lt;li class&#x3D;&quot;element&quot;&gt;Foo&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li class&#x3D;&quot;element&quot;&gt;Bar&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li class&#x3D;&quot;element&quot;&gt;Jay&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">        &lt;ul class&#x3D;&quot;list list-small&quot; id&#x3D;&quot;list-2&quot;&gt;</span><br><span class="line">            &lt;li class&#x3D;&quot;element&quot;&gt;Foo&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li class&#x3D;&quot;element&quot;&gt;Bar&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&#39;&#39;&#39;</span><br></pre></td></tr></table></figure>
-
-<p>通过select()直接传入CSS选择器即可完成选择<br><code>soup.select(&#39;.panel .panel-heading&#39;)</code><br><code>soup.select(&#39;ul li&#39;)</code><br><code>soup.select(&#39;#list-2 .element&#39;)</code><br>获取内容:  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for li in soup.select(&#39;li&#39;):  </span><br><span class="line">    print(li.get_text())</span><br></pre></td></tr></table></figure>
-
-<p>(六) 总结  </p>
-<ul>
-<li>推荐使用lxml解析库，必要时使用html.parser</li>
-<li>标签选择筛选功能弱但是速度快</li>
-<li>建议使用find()、find_all() 查询匹配单个结果或者多个结果</li>
-<li>如果对CSS选择器熟悉建议使用select()</li>
-<li>记住常用的获取属性和文本值的方法 <code>.text</code></li>
-</ul>
-</body></html>
+          
       
     </div>
     
@@ -484,6 +382,10 @@ and they lived at the bottom of a well.</p>
       
 
       
+      
+        <p class="article-more-link">
+          <a   href="/2020/09/28/%E3%80%90python%E3%80%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
