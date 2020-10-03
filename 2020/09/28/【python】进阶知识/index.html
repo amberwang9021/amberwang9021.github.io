@@ -7,29 +7,19 @@
   
   
   
-  <title>【计算机网络】-1 | AmberWang&#39;s World</title>
+  <title>【python】进阶知识 | AmberWang&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="从浏览器输入www.baidu.com后的全过程1、根据域名到DNS中找到IP2、根据IP建立TCP连接（三次握手）3、连接建立成功发起http请求4、服务器响应http请求5、浏览器解析html6、关闭TCP连接（四次挥手）7、浏览器渲染页面">
+  <meta name="description" content="装饰器向现有的对象添加新的功能，同时又不改变它的结构。用法实例：  身份验证 日志记录 输入合理性检查 缓存  输入任意数量和类型的参数：   123456789101112131415161718def my_decorator(func):    def wrapper(*args,**kwargs):        print(&#39;wrapper of decorator&#39;)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【计算机网络】-1">
-<meta property="og:url" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/index.html">
+<meta property="og:title" content="【python】进阶知识">
+<meta property="og:url" content="http://yoursite.com/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="AmberWang&#39;s World">
-<meta property="og:description" content="从浏览器输入www.baidu.com后的全过程1、根据域名到DNS中找到IP2、根据IP建立TCP连接（三次握手）3、连接建立成功发起http请求4、服务器响应http请求5、浏览器解析html6、关闭TCP连接（四次挥手）7、浏览器渲染页面">
+<meta property="og:description" content="装饰器向现有的对象添加新的功能，同时又不改变它的结构。用法实例：  身份验证 日志记录 输入合理性检查 缓存  输入任意数量和类型的参数：   123456789101112131415161718def my_decorator(func):    def wrapper(*args,**kwargs):        print(&#39;wrapper of decorator&#39;)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/%E6%89%B9%E6%B3%A82020-08-12.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/IP%E4%BA%94%E5%B1%82%E6%A8%A1%E5%9E%8B.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/ARP%E5%8D%8F%E8%AE%AE.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/Tcp%E6%8A%A5%E6%96%87%E5%A4%B4%E9%83%A8.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/HTTP%E5%8D%8F%E8%AE%AE%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/%E5%9B%BE%E8%A7%A3TCPIP.png">
-<meta property="article:published_time" content="2020-08-12T15:20:13.000Z">
-<meta property="article:modified_time" content="2020-09-15T15:26:05.357Z">
+<meta property="article:published_time" content="2020-09-28T13:11:35.177Z">
+<meta property="article:modified_time" content="2020-10-03T13:56:36.177Z">
 <meta property="article:author" content="Amber Wang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/%E6%89%B9%E6%B3%A82020-08-12.jpg">
   
     <link rel="alternative" href="/atom.xml" title="AmberWang&#39;s World" type="application/atom+xml">
   
@@ -276,11 +266,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-【计算机网络】-1" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-【python】进阶知识" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/" class="article-date">
-      <time datetime="2020-08-12T15:20:13.000Z" itemprop="datePublished">2020-08-12</time>
+      <a  href="/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/" class="article-date">
+      <time datetime="2020-09-28T13:11:35.177Z" itemprop="datePublished">2020-09-28</time>
 </a>
 
     </div>
@@ -294,7 +284,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【计算机网络】-1
+      【python】进阶知识
     </h1>
   
 
@@ -312,36 +302,54 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="从浏览器输入www-baidu-com后的全过程"><a href="#从浏览器输入www-baidu-com后的全过程" class="headerlink" title="从浏览器输入www.baidu.com后的全过程"></a>从浏览器输入<a href="http://www.baidu.com后的全过程" target="_blank" rel="noopener">www.baidu.com后的全过程</a></h3><p>1、根据域名到DNS中找到IP<br>2、根据IP建立TCP连接（三次握手）<br>3、连接建立成功发起http请求<br>4、服务器响应http请求<br>5、浏览器解析html<br>6、关闭TCP连接（四次挥手）<br>7、浏览器渲染页面  </p>
-<a id="more"></a>
-
-<h3 id="标准的OSI七层模型、TCP-IP四层模型、TCP-IP五层模型"><a href="#标准的OSI七层模型、TCP-IP四层模型、TCP-IP五层模型" class="headerlink" title="标准的OSI七层模型、TCP/IP四层模型、TCP/IP五层模型"></a>标准的OSI七层模型、TCP/IP四层模型、TCP/IP五层模型</h3><p><img src="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/%E6%89%B9%E6%B3%A82020-08-12.jpg" alt="模型"></p>
-<h4 id="TCP-IP五层模型思维导图"><a href="#TCP-IP五层模型思维导图" class="headerlink" title="TCP/IP五层模型思维导图"></a>TCP/IP五层模型思维导图</h4><p><img src="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/IP%E4%BA%94%E5%B1%82%E6%A8%A1%E5%9E%8B.jpg" alt="模型"></p>
-<h3 id="ARP-RARP协议-Address-resolution-protocol"><a href="#ARP-RARP协议-Address-resolution-protocol" class="headerlink" title="ARP/RARP协议(Address resolution protocol)"></a>ARP/RARP协议(Address resolution protocol)</h3><p>根据IP地址获取物理地址的一个协议<br>主机发送信息时将包含目标IP地址的ARP请求广播到网络上所有主机，并接受返回消息，以此确定目标的物理地址；<br>收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，以节约资源。  </p>
-<h4 id="ARP欺骗："><a href="#ARP欺骗：" class="headerlink" title="ARP欺骗："></a>ARP欺骗：</h4><p>攻击者向某一主机发送伪ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机。<br>ARP命令可用于查询、添加、删除缓存中ARP与MAC地址的对应关系。</p>
-<h4 id="ARP工作流程："><a href="#ARP工作流程：" class="headerlink" title="ARP工作流程："></a>ARP工作流程：</h4><p><img src="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/ARP%E5%8D%8F%E8%AE%AE.jpg" alt="模型"></p>
-<h3 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h3><p>TCP通信的三个阶段：连接建立、数据传送、连接释放<br>TCP报文首部格式：<br><img src="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/Tcp%E6%8A%A5%E6%96%87%E5%A4%B4%E9%83%A8.png" alt="模型"></p>
-<p>三次握手：<br><img src="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="模型"></p>
-<p>四次挥手：<br><img src="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="模型"></p>
-<h3 id="为什么要三次握手？"><a href="#为什么要三次握手？" class="headerlink" title="为什么要三次握手？"></a>为什么要三次握手？</h3><p>如果只有两次握手的话，客户端想要与服务端建立连接，则发送请求，正常的话服务端会接受请求，建立连接，但由于网络阻塞或其他原因，客户端不得不重新发送一遍，这种情形下，服务端最后会依次收到两个请求，极端情况是客户端会发送多个请求，而服务端最后建立了N个响应，极大地浪费资源。</p>
-<h3 id="HTTP（超文本传输协议）"><a href="#HTTP（超文本传输协议）" class="headerlink" title="HTTP（超文本传输协议）"></a>HTTP（超文本传输协议）</h3><p>应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。<br>HTTP协议定义Web客户端如何从Web服务器请求Web页面，以及服务器如何把Web页面传送给客户端。  </p>
-<h4 id="过程："><a href="#过程：" class="headerlink" title="过程："></a>过程：</h4><p>1、客户端连接到Web服务器<br>2、发送HTTP请求（一个请求报文包括请求行、请求头部、空行、请求数据）<br>3、服务器接受请求并返回HTTP响应<br>4、释放TCP连接<br>5、客户端浏览器解析HTML内容  </p>
-<p>请求报文的一般格式：<br><img src="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png" alt="模型"><br>HTTP响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文：<br><img src="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/HTTP%E5%8D%8F%E8%AE%AE%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87.png" alt="模型">  </p>
-<p><img src="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/%E5%9B%BE%E8%A7%A3TCPIP.png" alt="模型"></p>
-<h3 id="post和get的区别"><a href="#post和get的区别" class="headerlink" title="post和get的区别"></a>post和get的区别</h3><h4 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h4><p>1、GET请求方式在url后面拼接参数，只能以文本的形式传递参数。<br><a href="https://www.tianqiapi.com/api/?version=v1&amp;city=青岛&amp;callback=json" target="_blank" rel="noopener">https://www.tianqiapi.com/api/?version=v1&amp;city=青岛&amp;callback=json</a><br>2、传递的数据量小，4kb左右（不同浏览器会有差异）。<br>3、请求参数会显示在地址栏。<br>4、速度快，通常用于对安全性要求不高的请求。  </p>
-<h4 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h4><p>1、POST请求的请求参数是在request body里面的。<br>2、传递数据量大，请求对数据长度没有要求。<br>3、请求不会被缓存，也不会保留在浏览器的历史记录中。<br>4、用于密码等安全性要求高的场合，提交数据量较大的场合，如上传文章、发布文章等。<br>5、POST方式提交数据上限默认为8M。  </p>
-<h4 id="GET和POST请求的区别"><a href="#GET和POST请求的区别" class="headerlink" title="GET和POST请求的区别"></a>GET和POST请求的区别</h4><p>1、GET参数通过URL传递，POST 放在request body中。<br>2、相对于POST，GET更不安全，因为GET请求时参数是直接暴露在URL上的，所以不能用来传递敏感信息。<br>3、GET请求在URL中传送的参数是有长度限制的，而POST没有。<br>4、GET请求会被浏览器主动cashe，而POST不会，除非手动设置。<br>5、GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。  </p>
-<h3 id="HTTP和HTTPS的区别"><a href="#HTTP和HTTPS的区别" class="headerlink" title="HTTP和HTTPS的区别"></a>HTTP和HTTPS的区别</h3><p>1、https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。<br>2、http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。<br>3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。<br>4、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。  </p>
-<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p>IP地址由网络号（包括子网号）和主机号组成。</p>
+        <h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>向现有的对象添加新的功能，同时又不改变它的结构。<br>用法实例：</p>
 <ul>
-<li>网络地址<br>网络地址的主机号为全0，网络地址代表着整个网络。</li>
-<li>广播地址<br>广播地址的主机号为全1。<br>当向某个网络的广播地址发送消息时，该网络内的所有主机都能收到该广播信息。</li>
-<li>组播地址<br>D类地址</li>
+<li>身份验证</li>
+<li>日志记录</li>
+<li>输入合理性检查</li>
+<li>缓存</li>
 </ul>
-<h4 id="A，B，C，D类地址"><a href="#A，B，C，D类地址" class="headerlink" title="A，B，C，D类地址"></a>A，B，C，D类地址</h4><p>A类地址以0开头，第一个字节作为网络号<br>0.0.0.0~127.255.255.255</p>
-<p>B类地址以10开头，前两个字节作为网络号<br>128.0.0.0~191.255.255.255<br>1000 0001   —  1011 1111</p>
-<p>C类地址以110开头，前三个字节作为网络号<br>192.0.0.0~223.255.255.255<br>1100 0000  —  1101 1111</p>
-<p>D类地址以1110开头 组播地址<br>224.0.0.0~239.255.255.255</p>
+<p>输入任意数量和类型的参数：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def my_decorator(func):</span><br><span class="line">    def wrapper(*args,**kwargs):</span><br><span class="line">        print(&#39;wrapper of decorator&#39;)</span><br><span class="line">        print(*args,**kwargs)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@my_decorator</span><br><span class="line">def greet(message):</span><br><span class="line">    print(message)</span><br><span class="line"></span><br><span class="line">greet(&#39;hello world&#39;)</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line"></span><br><span class="line">类也可以作为装饰器。类装饰器主要依赖于函数__call__()，每次你调用一个类的实例时，函数__call__()就会被执行一次。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">（一）身份认证  </span><br><span class="line">例如每次发表评论前，都需要进行是否登录的验证，如果登录，则可以正常发表评论；如果未登录，则抛出异常</span><br></pre></td></tr></table></figure>
+<p>import functools<br>def authenticate(func):<br>    @functools.wraps(func)<br>    def wrapper(<em>args,*</em>kwargs):<br>        request = args[0]<br>        if check_user_logged_in(request):<br>            return func(<em>args,*</em>kwargs)<br>        else:<br>            raise Exception(‘Authentication failed’)<br>    return wrapper</p>
+<p>@authenticate<br>def post_comment(request,…)<br>    …</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">（二）日志记录  </span><br><span class="line">比如需要记录某个函数的运行时间</span><br></pre></td></tr></table></figure>
+<p>import time<br>import functools</p>
+<p>def log_execution_time(func):<br>    @functools.wraps(func)<br>    def wrapper(<em>args,*</em>kwargs):<br>        start = time.perf_counter()<br>        res = func(<em>args,*</em>kwargs)<br>        end = time.perf_counter()<br>        print(‘{} took {}’.format(func.<strong>name</strong>,(end-start)))<br>        return res<br>    return wrapper</p>
+<p>@log_execution_time<br>def calculate_similarity(items):<br>    …</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">（三）输入合理性检查  </span><br><span class="line">可以利用装饰器对输入进行合理性检查，降低输入不正确造成的时间成本的浪费。</span><br></pre></td></tr></table></figure>
+<p>import functools<br>def validation_check(input):<br>    @functools.wraps(func)<br>    def wrapper(<em>args,*</em>kwargs):<br>        …#检查输入是否合法</p>
+<p>@validation_check()<br>def neural_network_training(,,):<br>    …</p>
+<p>```</p>
+<p>(四) 缓存<br>LRU即删除最久没有访问的内容<br><code>@lru_cache</code></p>
+<h3 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h3><ul>
+<li>浅拷贝<br>是指重新分配一块内存，创建一个新的对象，里面的元素是原对象中子对象的引用。  </li>
+<li>深拷贝<br>是指重新分配一块内存，创建一个新的对象，并且将原对象中的元素，以递归的方式，通过创建新的子对象拷贝到新对象中。</li>
+</ul>
+<h3 id="Python协程"><a href="#Python协程" class="headerlink" title="Python协程"></a>Python协程</h3><p>协程是实现并发编程的一种方式。<br>对操作系统而言，线程是最小的执行单元，进程是最小的资源管理单元。无论是进程还是线程，都是由操作系统所管理的。</p>
+<p>协程与多线程的区别：  </p>
+<ul>
+<li>协程是单线程  </li>
+<li>协程由用户决定，在哪些地方交出控制权，切换到下一个任务  </li>
+</ul>
+<p>协程的写法更加简洁清晰，把async/await语法和create_task结合来用，对于中小级别的并发需求已经毫无压力。</p>
+<h3 id="GIL-全局解释器"><a href="#GIL-全局解释器" class="headerlink" title="GIL 全局解释器"></a>GIL 全局解释器</h3><p>GIL（Global Interpreter Lock）全局解释器锁  </p>
+<ul>
+<li>作用<br>每一个Python线程，在Cpython解释器中执行时，都会先锁住自己的线程，阻止别的线程执行。  </li>
+<li>原因  <ul>
+<li>设计者为了规避类似于内存管理这样的复杂的竞争风险问题  </li>
+<li>Cpython大量使用C语言库，但大部分C语言库都不是原生线程安全的（线程安全会降低性能和增加复杂度）  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Python垃圾回收机制"><a href="#Python垃圾回收机制" class="headerlink" title="Python垃圾回收机制"></a>Python垃圾回收机制</h3><p>计数引用<br>当这个对象的引用计数（指针数）为0的时候，说明这个对象永远不可达，则被回收。<br>当引用计数为0时，会启用垃圾回收机制，还有别的情况时会启动垃圾回收吗？  </p>
+<ul>
+<li>针对循环引用的自动垃圾回收  <ul>
+<li>标记清除（mark-sweep）算法  </li>
+<li>分代收集（generational）</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -350,13 +358,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/">【计算机网络】-1</a></p>
+        <p><span>本文标题:</span><a  href="/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/">【python】进阶知识</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Amber Wang 的个人博客">Amber Wang</a></p>
-        <p><span>发布时间:</span>2020年08月12日 - 23时20分</p>
-        <p><span>最后更新:</span>2020年09月15日 - 23时26分</p>
+        <p><span>发布时间:</span>2020年09月28日 - 21时11分</p>
+        <p><span>最后更新:</span>2020年10月03日 - 21时56分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/" title="【计算机网络】-1">http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/　　作者: Amber Wang" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/" title="【python】进阶知识">http://yoursite.com/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/　　作者: Amber Wang" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -367,18 +375,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/09/15/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          【计算机网络】-2
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E9%A1%B5%E3%80%81%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E3%80%91%E3%80%90DML%20DDL%E3%80%91/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【MySQL】【分页、联合查询】【DML DDL】</div>
+    <a  href="/2020/09/28/%E3%80%90python%E3%80%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【python】基础知识</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -390,7 +389,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#从浏览器输入www-baidu-com后的全过程"><span class="toc-number">1.</span> <span class="toc-text">从浏览器输入www.baidu.com后的全过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标准的OSI七层模型、TCP-IP四层模型、TCP-IP五层模型"><span class="toc-number">2.</span> <span class="toc-text">标准的OSI七层模型、TCP&#x2F;IP四层模型、TCP&#x2F;IP五层模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP-IP五层模型思维导图"><span class="toc-number">2.1.</span> <span class="toc-text">TCP&#x2F;IP五层模型思维导图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARP-RARP协议-Address-resolution-protocol"><span class="toc-number">3.</span> <span class="toc-text">ARP&#x2F;RARP协议(Address resolution protocol)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ARP欺骗："><span class="toc-number">3.1.</span> <span class="toc-text">ARP欺骗：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ARP工作流程："><span class="toc-number">3.2.</span> <span class="toc-text">ARP工作流程：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP协议"><span class="toc-number">4.</span> <span class="toc-text">TCP协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要三次握手？"><span class="toc-number">5.</span> <span class="toc-text">为什么要三次握手？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP（超文本传输协议）"><span class="toc-number">6.</span> <span class="toc-text">HTTP（超文本传输协议）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#过程："><span class="toc-number">6.1.</span> <span class="toc-text">过程：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#post和get的区别"><span class="toc-number">7.</span> <span class="toc-text">post和get的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GET请求"><span class="toc-number">7.1.</span> <span class="toc-text">GET请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#POST请求"><span class="toc-number">7.2.</span> <span class="toc-text">POST请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GET和POST请求的区别"><span class="toc-number">7.3.</span> <span class="toc-text">GET和POST请求的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP和HTTPS的区别"><span class="toc-number">8.</span> <span class="toc-text">HTTP和HTTPS的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP地址"><span class="toc-number">9.</span> <span class="toc-text">IP地址</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#A，B，C，D类地址"><span class="toc-number">9.1.</span> <span class="toc-text">A，B，C，D类地址</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#装饰器"><span class="toc-number">1.</span> <span class="toc-text">装饰器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深拷贝与浅拷贝"><span class="toc-number">2.</span> <span class="toc-text">深拷贝与浅拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python协程"><span class="toc-number">3.</span> <span class="toc-text">Python协程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GIL-全局解释器"><span class="toc-number">4.</span> <span class="toc-text">GIL 全局解释器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python垃圾回收机制"><span class="toc-number">5.</span> <span class="toc-text">Python垃圾回收机制</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -463,13 +462,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/09/15/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-2/" title="上一篇: 【计算机网络】-2">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E9%A1%B5%E3%80%81%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E3%80%91%E3%80%90DML%20DDL%E3%80%91/" title="下一篇: 【MySQL】【分页、联合查询】【DML DDL】">
+            <a  href="/2020/09/28/%E3%80%90python%E3%80%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="下一篇: 【python】基础知识">
                 <i class="fa fa-angle-right"></i>
             </a>
         
