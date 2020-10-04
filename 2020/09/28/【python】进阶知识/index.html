@@ -17,14 +17,14 @@
 <meta property="og:description" content="装饰器向现有的对象添加新的功能，同时又不改变它的结构。用法实例：  身份验证 日志记录 输入合理性检查 缓存">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-28T13:11:35.177Z">
-<meta property="article:modified_time" content="2020-10-03T14:21:50.614Z">
+<meta property="article:modified_time" content="2020-10-04T02:14:57.241Z">
 <meta property="article:author" content="Amber Wang">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="AmberWang&#39;s World" type="application/atom+xml">
   
   
-    <link rel="icon" href="/img/15.png">
+    <link rel="icon" href="/img/tubiao2.png">
   
   
   
@@ -67,7 +67,7 @@
 
         <a href="/" class="profilepic">
             
-            <img lazy-src="/img/me2.jpg" class="js-avatar">
+            <img lazy-src="/img/me2.png" class="js-avatar">
             
         </a>
         <hgroup>
@@ -233,7 +233,7 @@
         <header id="header" class="inner">
             <a href="/" class="profilepic">
                 
-                    <img lazy-src="/img/me2.jpg" class="js-avatar">
+                    <img lazy-src="/img/me2.png" class="js-avatar">
                 
             </a>
             <hgroup>
@@ -312,17 +312,22 @@
 </li>
 </ul>
 <p>输入任意数量和类型的参数：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def my_decorator(func):</span><br><span class="line">    def wrapper(*args,**kwargs):</span><br><span class="line">        print(&#39;wrapper of decorator&#39;)</span><br><span class="line">        print(*args,**kwargs)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@my_decorator</span><br><span class="line">def greet(message):</span><br><span class="line">    print(message)</span><br><span class="line"></span><br><span class="line">greet(&#39;hello world&#39;)</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line"></span><br><span class="line">类也可以作为装饰器。类装饰器主要依赖于函数__call__()，每次你调用一个类的实例时，函数__call__()就会被执行一次。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">（一）身份认证  </span><br><span class="line">例如每次发表评论前，都需要进行是否登录的验证，如果登录，则可以正常发表评论；如果未登录，则抛出异常</span><br></pre></td></tr></table></figure>
-<p>import functools<br>def authenticate(func):<br>    @functools.wraps(func)<br>    def wrapper(<em>args,*</em>kwargs):<br>        request = args[0]<br>        if check_user_logged_in(request):<br>            return func(<em>args,*</em>kwargs)<br>        else:<br>            raise Exception(‘Authentication failed’)<br>    return wrapper</p>
-<p>@authenticate<br>def post_comment(request,…)<br>    …</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">（二）日志记录  </span><br><span class="line">比如需要记录某个函数的运行时间</span><br></pre></td></tr></table></figure>
-<p>import time<br>import functools</p>
-<p>def log_execution_time(func):<br>    @functools.wraps(func)<br>    def wrapper(<em>args,*</em>kwargs):<br>        start = time.perf_counter()<br>        res = func(<em>args,*</em>kwargs)<br>        end = time.perf_counter()<br>        print(‘{} took {}’.format(func.<strong>name</strong>,(end-start)))<br>        return res<br>    return wrapper</p>
-<p>@log_execution_time<br>def calculate_similarity(items):<br>    …</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">（三）输入合理性检查  </span><br><span class="line">可以利用装饰器对输入进行合理性检查，降低输入不正确造成的时间成本的浪费。</span><br></pre></td></tr></table></figure>
-<p>import functools<br>def validation_check(input):<br>    @functools.wraps(func)<br>    def wrapper(<em>args,*</em>kwargs):<br>        …#检查输入是否合法</p>
-<p>@validation_check()<br>def neural_network_training(,,):<br>    …</p>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def my_decorator(func):</span><br><span class="line">    def wrapper(*args,**kwargs):</span><br><span class="line">        print(&#39;wrapper of decorator&#39;)</span><br><span class="line">        print(*args,**kwargs)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@my_decorator</span><br><span class="line">def greet(message):</span><br><span class="line">    print(message)</span><br><span class="line"></span><br><span class="line">greet(&#39;hello world&#39;)</span><br></pre></td></tr></table></figure>
+
+
+<p>类也可以作为装饰器。类装饰器主要依赖于函数<strong>call</strong>()，每次你调用一个类的实例时，函数<strong>call</strong>()就会被执行一次。</p>
+<p>（一）身份认证<br>例如每次发表评论前，都需要进行是否登录的验证，如果登录，则可以正常发表评论；如果未登录，则抛出异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import functools</span><br><span class="line">def authenticate(func):</span><br><span class="line">    @functools.wraps(func)</span><br><span class="line">    def wrapper(*args,**kwargs):</span><br><span class="line">        request &#x3D; args[0]</span><br><span class="line">        if check_user_logged_in(request):</span><br><span class="line">            return func(*args,**kwargs)</span><br><span class="line">        else:</span><br><span class="line">            raise Exception(&#39;Authentication failed&#39;)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@authenticate</span><br><span class="line">def post_comment(request,...)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+
+<p>（二）日志记录<br>比如需要记录某个函数的运行时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">import functools</span><br><span class="line"></span><br><span class="line">def log_execution_time(func):</span><br><span class="line">    @functools.wraps(func)</span><br><span class="line">    def wrapper(*args,**kwargs):</span><br><span class="line">        start &#x3D; time.perf_counter()</span><br><span class="line">        res &#x3D; func(*args,**kwargs)</span><br><span class="line">        end &#x3D; time.perf_counter()</span><br><span class="line">        print(&#39;&#123;&#125; took &#123;&#125;&#39;.format(func.__name__,(end-start)))</span><br><span class="line">        return res</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@log_execution_time</span><br><span class="line">def calculate_similarity(items):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+
+<p>（三）输入合理性检查<br>可以利用装饰器对输入进行合理性检查，降低输入不正确造成的时间成本的浪费。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import functools</span><br><span class="line">def validation_check(input):</span><br><span class="line">    @functools.wraps(func)</span><br><span class="line">    def wrapper(*args,**kwargs):</span><br><span class="line">        ...#检查输入是否合法</span><br><span class="line"></span><br><span class="line">@validation_check()</span><br><span class="line">def neural_network_training(,,):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+
 <p>(四) 缓存<br>LRU即删除最久没有访问的内容<br><code>@lru_cache</code></p>
 <h3 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h3><ul>
 <li>浅拷贝<br>是指重新分配一块内存，创建一个新的对象，里面的元素是原对象中子对象的引用。  </li>
@@ -363,7 +368,7 @@
         <p><span>本文标题:</span><a  href="/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/">【python】进阶知识</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Amber Wang 的个人博客">Amber Wang</a></p>
         <p><span>发布时间:</span>2020年09月28日 - 21时11分</p>
-        <p><span>最后更新:</span>2020年10月03日 - 22时21分</p>
+        <p><span>最后更新:</span>2020年10月04日 - 10时14分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/" title="【python】进阶知识">http://yoursite.com/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/　　作者: Amber Wang" title=""></span>
