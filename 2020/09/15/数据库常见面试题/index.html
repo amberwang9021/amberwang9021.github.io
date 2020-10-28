@@ -17,7 +17,7 @@
 <meta property="og:description" content="数据库（Database）是存放数据的仓库。数据库具有数据库管理系统（Database Management System, DBMS），常见的数据库管理系统有MySql、Oracle、DB2、sqlserver。而SQL（Structure Query Language)是指结构化查询语言，是专门与DBMS通信的语言。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-15T15:36:21.230Z">
-<meta property="article:modified_time" content="2020-10-28T02:02:14.742Z">
+<meta property="article:modified_time" content="2020-10-28T02:13:42.339Z">
 <meta property="article:author" content="Amber Wang">
 <meta name="twitter:card" content="summary">
   
@@ -306,7 +306,7 @@
 <a id="more"></a>
 
 <h3 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h3><hr>
-<p>数据库通过建立一定的规则来规范开发人员设计数据库，并且优化数据库存储方式。这些规范就叫做范式。<br>（1）第一范式<br>当关系模式R的所有属性都不能再分解为更基本的数据单位时，称R是满足第一范式的，简记为1NF。<br>（2）第二范式<br>R的所有非主属性都 <strong>完全依赖</strong> 于R的每一个候选关键属性，称R满足第二范式，简记为2NF。例如学生表中学分全部依赖于课程号，部分依赖学号和课程号，不满足第二范式。<br>（3）第三范式<br>R的所有非主属性 <strong>直接依赖</strong> 与R的每一个候选关键属性，称R满足第三范式，简记为3NF。例如学号依赖于姓名，成绩依赖于学号和课程号，不存在部分依赖，也不存在传递依赖，满足第三范式。  </p>
+<p>数据库通过建立一定的规则来规范开发人员设计数据库，并且优化数据库存储方式。这些规范就叫做范式。<br>（1）第一范式<br>当关系模式R的所有属性都不能再分解为更基本的数据单位时，称R是满足第一范式的，简记为1NF。<br>（2）第二范式<br>R的所有非主属性都 <font color="red">完全依赖</font> 于R的每一个候选关键属性，称R满足第二范式，简记为2NF。例如学生表中学分全部依赖于课程号，部分依赖学号和课程号，不满足第二范式。<br>（3）第三范式<br>R的所有非主属性 <font color="red">直接依赖</font>  与R的每一个候选关键属性，称R满足第三范式，简记为3NF。例如学号依赖于姓名，成绩依赖于学号和课程号，不存在部分依赖，也不存在传递依赖，满足第三范式。  </p>
 <h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><ul>
 <li>定义<br>一个单元的一系列SQL语句的集合，要么全做，要么全不做。</li>
 <li>特性（ACID）  </li>
@@ -335,7 +335,71 @@
 <li>更新锁（U锁）<br>用于可更新的资源  </li>
 <li>独占锁（X锁，排他锁，写锁）<br>阻止其他的锁包括共享锁，写是独占锁，防止脏读  </li>
 </ul>
-<h4 id="MySQL中MyISAM与InnoDB区别及选择"><a href="#MySQL中MyISAM与InnoDB区别及选择" class="headerlink" title="MySQL中MyISAM与InnoDB区别及选择"></a>MySQL中MyISAM与InnoDB区别及选择</h4><p>总结：<br>如果系统读多写少，对原子性要求低，选择MyISAM。并且MyISAM恢复速度快，可直接用辈分覆盖恢复。<br>如果系统读少写多，尤其是<strong>并发写入高</strong>时，选择InnoDB。<br>具体区别：<br>| 对比项 | MyISAM | InnoDB |<br>| :—–| :—-: | :—-: |<br>| 存储结构 | 三个文件存储 | 都保存在同一个数据文件中 |<br>| 存储空间 | 可被压缩，存储空间较小，支持静态表、动态表、压缩表 | 需要更多的存储空间，建立专用的缓冲池用于高速缓存数据和索引 |<br>| 可移植性 | 文件形式存储，跨平台操作方便 | 真实数据存储在共享表空间，可移植性差 |<br>| 事务 | 关注性能，不提供事务支持 | 提供事务支持、外键等高级数据库功能 |<br>| 自增长列 | 必须是索引，可以建立联合索引 | 必须是索引，也可以是组合索引，但自增键必须在最左侧 |<br>| 表锁差异 | 只支持表级锁 | 支持事务和行级锁，行级锁能提高并发性能（行级锁只有在where的主键才有效） |<br>| 全文索引 | 支持fulltext的全文索引 | 不支持fulltext的全文索引 |<br>| 表主键 | 允许没有任何索引和主键的表存在 | 如果没有设定主键或索引，会自动生成一个6字节的主键 |<br>| 表的具体行数 | 保存了表的具体行数 | 没有保存，使用select count(*) from table消耗相当大，但加了where之后和MyISAM一样 |<br>| CURD | select | insert/update/delete |<br>| 外键 | 不支持 | 支持 |</p>
+<h4 id="MySQL中MyISAM与InnoDB区别及选择"><a href="#MySQL中MyISAM与InnoDB区别及选择" class="headerlink" title="MySQL中MyISAM与InnoDB区别及选择"></a>MySQL中MyISAM与InnoDB区别及选择</h4><p>总结：<br>如果系统读多写少，对原子性要求低，选择MyISAM。并且MyISAM恢复速度快，可直接用辈分覆盖恢复。<br>如果系统读少写多，尤其是<strong>并发写入高</strong>时，选择InnoDB。<br>具体区别：</p>
+<table>
+<thead>
+<tr>
+<th align="left">对比项</th>
+<th align="center">MyISAM</th>
+<th align="center">InnoDB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">存储结构</td>
+<td align="center">三个文件存储</td>
+<td align="center">都保存在同一个数据文件中</td>
+</tr>
+<tr>
+<td align="left">存储空间</td>
+<td align="center">可被压缩，存储空间较小，支持静态表、动态表、压缩表</td>
+<td align="center">需要更多的存储空间，建立专用的缓冲池用于高速缓存数据和索引</td>
+</tr>
+<tr>
+<td align="left">可移植性</td>
+<td align="center">文件形式存储，跨平台操作方便</td>
+<td align="center">真实数据存储在共享表空间，可移植性差</td>
+</tr>
+<tr>
+<td align="left">事务</td>
+<td align="center">关注性能，不提供事务支持</td>
+<td align="center">提供事务支持、外键等高级数据库功能</td>
+</tr>
+<tr>
+<td align="left">自增长列</td>
+<td align="center">必须是索引，可以建立联合索引</td>
+<td align="center">必须是索引，也可以是组合索引，但自增键必须在最左侧</td>
+</tr>
+<tr>
+<td align="left">表锁差异</td>
+<td align="center">只支持表级锁</td>
+<td align="center">支持事务和行级锁，行级锁能提高并发性能（行级锁只有在where的主键才有效）</td>
+</tr>
+<tr>
+<td align="left">全文索引</td>
+<td align="center">支持fulltext的全文索引</td>
+<td align="center">不支持fulltext的全文索引</td>
+</tr>
+<tr>
+<td align="left">表主键</td>
+<td align="center">允许没有任何索引和主键的表存在</td>
+<td align="center">如果没有设定主键或索引，会自动生成一个6字节的主键</td>
+</tr>
+<tr>
+<td align="left">表的具体行数</td>
+<td align="center">保存了表的具体行数</td>
+<td align="center">没有保存，使用select count(*) from table消耗相当大，但加了where之后和MyISAM一样</td>
+</tr>
+<tr>
+<td align="left">CURD</td>
+<td align="center">select</td>
+<td align="center">insert/update/delete</td>
+</tr>
+<tr>
+<td align="left">外键</td>
+<td align="center">不支持</td>
+<td align="center">支持</td>
+</tr>
+</tbody></table>
 <h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>定义：存储引擎用于快速找到记录的一种数据结构<br>Mysql中索引的存储类型有两种：Btree和Hash，具体和表的存储引擎相关<br>MyISAM和InnoD存储引擎只支持Btree，MEMORY/HEAP存储引擎支持Hash和Btree索引。<br><strong>索引分类</strong></p>
 <ul>
 <li>普通索引：允许在定义索引的列中插入重复值和空值  </li>
@@ -382,7 +446,7 @@
         <p><span>本文标题:</span><a  href="/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">数据库常见面试题</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Amber Wang 的个人博客">Amber Wang</a></p>
         <p><span>发布时间:</span>2020年09月15日 - 23时36分</p>
-        <p><span>最后更新:</span>2020年10月28日 - 10时02分</p>
+        <p><span>最后更新:</span>2020年10月28日 - 10时13分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" title="数据库常见面试题">http://yoursite.com/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/　　作者: Amber Wang" title=""></span>
