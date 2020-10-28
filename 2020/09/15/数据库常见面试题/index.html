@@ -7,23 +7,19 @@
   
   
   
-  <title>【操作系统】进程线程、死锁 | AmberWang&#39;s World</title>
+  <title>数据库常见面试题 | AmberWang&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="操作系统 系统资源的管理者  提供的功能 处理机管理 存储器管理 文件管理 设备管理   目标：安全、高效">
+  <meta name="description" content="数据库（Database）是存放数据的仓库。数据库具有数据库管理系统（Database Management System, DBMS），常见的数据库管理系统有MySql、Oracle、DB2、sqlserver。而SQL（Structure Query Language)是指结构化查询语言，是专门与DBMS通信的语言。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【操作系统】进程线程、死锁">
-<meta property="og:url" content="http://yoursite.com/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/index.html">
+<meta property="og:title" content="数据库常见面试题">
+<meta property="og:url" content="http://yoursite.com/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="AmberWang&#39;s World">
-<meta property="og:description" content="操作系统 系统资源的管理者  提供的功能 处理机管理 存储器管理 文件管理 设备管理   目标：安全、高效">
+<meta property="og:description" content="数据库（Database）是存放数据的仓库。数据库具有数据库管理系统（Database Management System, DBMS），常见的数据库管理系统有MySql、Oracle、DB2、sqlserver。而SQL（Structure Query Language)是指结构化查询语言，是专门与DBMS通信的语言。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/PCB.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81.jpg">
-<meta property="article:published_time" content="2020-10-09T12:48:15.128Z">
-<meta property="article:modified_time" content="2020-10-09T15:47:48.184Z">
+<meta property="article:published_time" content="2020-09-15T15:36:21.230Z">
+<meta property="article:modified_time" content="2020-10-28T02:02:14.742Z">
 <meta property="article:author" content="Amber Wang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.jpg">
   
     <link rel="alternative" href="/atom.xml" title="AmberWang&#39;s World" type="application/atom+xml">
   
@@ -270,11 +266,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-【操作系统】进程线程、死锁" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-数据库常见面试题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/" class="article-date">
-      <time datetime="2020-10-09T12:48:15.128Z" itemprop="datePublished">2020-10-09</time>
+      <a  href="/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-date">
+      <time datetime="2020-09-15T15:36:21.230Z" itemprop="datePublished">2020-09-15</time>
 </a>
 
     </div>
@@ -288,7 +284,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【操作系统】进程线程、死锁
+      数据库常见面试题
     </h1>
   
 
@@ -306,110 +302,75 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><ul>
-<li>系统资源的管理者 <ul>
-<li>提供的功能<ul>
-<li>处理机管理</li>
-<li>存储器管理</li>
-<li>文件管理</li>
-<li>设备管理</li>
+        <p>数据库（Database）是存放数据的仓库。数据库具有数据库管理系统（Database Management System, DBMS），常见的数据库管理系统有MySql、Oracle、DB2、sqlserver。而SQL（Structure Query Language)是指结构化查询语言，是专门与DBMS通信的语言。</p>
+<a id="more"></a>
+
+<h3 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h3><hr>
+<p>数据库通过建立一定的规则来规范开发人员设计数据库，并且优化数据库存储方式。这些规范就叫做范式。<br>（1）第一范式<br>当关系模式R的所有属性都不能再分解为更基本的数据单位时，称R是满足第一范式的，简记为1NF。<br>（2）第二范式<br>R的所有非主属性都 <strong>完全依赖</strong> 于R的每一个候选关键属性，称R满足第二范式，简记为2NF。例如学生表中学分全部依赖于课程号，部分依赖学号和课程号，不满足第二范式。<br>（3）第三范式<br>R的所有非主属性 <strong>直接依赖</strong> 与R的每一个候选关键属性，称R满足第三范式，简记为3NF。例如学号依赖于姓名，成绩依赖于学号和课程号，不存在部分依赖，也不存在传递依赖，满足第三范式。  </p>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><ul>
+<li>定义<br>一个单元的一系列SQL语句的集合，要么全做，要么全不做。</li>
+<li>特性（ACID）  </li>
 </ul>
-</li>
-<li>目标：安全、高效  <a id="more"></a></li>
+<p>1、原子性（atomacity) 理解：对事务的执行，要么全都执行，要么全都不执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">begin transaction</span><br><span class="line">update account set money &#x3D; money - 100 where name &#x3D; &#39;A&#39;;</span><br><span class="line">update account set money &#x3D; money + 100 where name &#x3D; &#39;B&#39;;</span><br><span class="line">if Error then </span><br><span class="line">    rollback</span><br><span class="line">else</span><br><span class="line">    commit</span><br></pre></td></tr></table></figure>
+
+<p>在从A转账到B的过程中，如果发生异常，则整个事务回滚。</p>
+<p>2、一致性（consistency) 理解：事务完成时，所有数据保持一致状态。<br>例如：银行转账事务，不论事务成功或失败，account表中存款总额为2000元。</p>
+<p>3、隔离性（isolation）理解：由并发事务所做的修改必须与其他并发事务所做的修改隔离。  </p>
+<p>4、持久性（durability）理解：事务完成之后，对系统的影响是永久的。</p>
+<h3 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h3><h4 id="异常情况"><a href="#异常情况" class="headerlink" title="异常情况"></a>异常情况</h4><ul>
+<li>脏读（Dirty Read）<br>读取修改但尚未提交的数据，产生脏读。</li>
+<li>不可重复读（Nonrepeatable Read）<br>一个事务对同一行数据重复读取时，结果却不同。</li>
+<li>幻读（Phantom Read）<br>两次查询，包括了第一次查询中未出现的数据。</li>
+<li>丢失修改<br>（1）并发事务同时读取，第一个被提交，第二个被撤销，那么两者一同撤销；<br>（2）并发事务同时读取，第一个修改提交，第二个也修改提交，第一次修改会失效。</li>
 </ul>
-</li>
-<li>作为用户和计算机硬件之间的接口  <ul>
-<li>提供的功能  <ul>
-<li>命令接口<ul>
-<li>联机命令接口</li>
-<li>脱机命令接口</li>
+<h4 id="Mysql的四种事务隔离级别"><a href="#Mysql的四种事务隔离级别" class="headerlink" title="Mysql的四种事务隔离级别"></a>Mysql的四种事务隔离级别</h4><ul>
+<li>未提交读（Read Uncommitted）写锁<br>允许脏读</li>
+<li>已提交读（Read Committed）瞬间共享读锁和写锁<br>不允许脏读，但会出现不可重复度</li>
+<li>可重复读（Repeatable Read）共享读锁和写锁<br>先后执行同一查询语句时，得到结果一样；不允许脏读，不允许非重复度，但会出现幻读。</li>
+<li>串行读（Serializable）读加读锁，写加写锁，两者互斥<br>这个事务执行的时候不允许其他事务并发地执行。完全串行的读，每次读都需要获得表级共享锁，读写相互都会阻塞；不允许不一致的现象出现。  </li>
 </ul>
-</li>
-<li>程序接口  </li>
-<li>GUI（图形用户界面）</li>
+<h4 id="事务隔离的实现：锁"><a href="#事务隔离的实现：锁" class="headerlink" title="事务隔离的实现：锁"></a>事务隔离的实现：锁</h4><ul>
+<li>共享锁（s锁，读锁）<br>用于读，不会阻止其他事务读，但阻止写和修改  </li>
+<li>更新锁（U锁）<br>用于可更新的资源  </li>
+<li>独占锁（X锁，排他锁，写锁）<br>阻止其他的锁包括共享锁，写是独占锁，防止脏读  </li>
 </ul>
-</li>
-<li>目标：方便用户使用  </li>
-</ul>
-</li>
-</ul>
-<h3 id="操作系统的特征"><a href="#操作系统的特征" class="headerlink" title="操作系统的特征"></a>操作系统的特征</h3><ul>
-<li>并发</li>
-<li>共享</li>
-<li>虚拟</li>
-<li>异步</li>
-</ul>
-<h3 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h3><p>并发：指两个或多个事件在同一时间间隔发生。这些事件宏观上是同时发生的，但微观上是交替发生的。<br>并行：指两个或多个事件在同一时刻同时发生。  </p>
-<p>操作系统的并发性指计算机系统中同时存在着多个运行的程序。  </p>
-<h3 id="共享"><a href="#共享" class="headerlink" title="共享"></a>共享</h3><p>共享即资源共享，是指系统中的资源可供内存中多个并发执行的进程共同使用。<br>两种资源共享方式</p>
+<h4 id="MySQL中MyISAM与InnoDB区别及选择"><a href="#MySQL中MyISAM与InnoDB区别及选择" class="headerlink" title="MySQL中MyISAM与InnoDB区别及选择"></a>MySQL中MyISAM与InnoDB区别及选择</h4><p>总结：<br>如果系统读多写少，对原子性要求低，选择MyISAM。并且MyISAM恢复速度快，可直接用辈分覆盖恢复。<br>如果系统读少写多，尤其是<strong>并发写入高</strong>时，选择InnoDB。<br>具体区别：<br>| 对比项 | MyISAM | InnoDB |<br>| :—–| :—-: | :—-: |<br>| 存储结构 | 三个文件存储 | 都保存在同一个数据文件中 |<br>| 存储空间 | 可被压缩，存储空间较小，支持静态表、动态表、压缩表 | 需要更多的存储空间，建立专用的缓冲池用于高速缓存数据和索引 |<br>| 可移植性 | 文件形式存储，跨平台操作方便 | 真实数据存储在共享表空间，可移植性差 |<br>| 事务 | 关注性能，不提供事务支持 | 提供事务支持、外键等高级数据库功能 |<br>| 自增长列 | 必须是索引，可以建立联合索引 | 必须是索引，也可以是组合索引，但自增键必须在最左侧 |<br>| 表锁差异 | 只支持表级锁 | 支持事务和行级锁，行级锁能提高并发性能（行级锁只有在where的主键才有效） |<br>| 全文索引 | 支持fulltext的全文索引 | 不支持fulltext的全文索引 |<br>| 表主键 | 允许没有任何索引和主键的表存在 | 如果没有设定主键或索引，会自动生成一个6字节的主键 |<br>| 表的具体行数 | 保存了表的具体行数 | 没有保存，使用select count(*) from table消耗相当大，但加了where之后和MyISAM一样 |<br>| CURD | select | insert/update/delete |<br>| 外键 | 不支持 | 支持 |</p>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>定义：存储引擎用于快速找到记录的一种数据结构<br>Mysql中索引的存储类型有两种：Btree和Hash，具体和表的存储引擎相关<br>MyISAM和InnoD存储引擎只支持Btree，MEMORY/HEAP存储引擎支持Hash和Btree索引。<br><strong>索引分类</strong></p>
 <ul>
-<li>互斥共享方式：一段时间内只允许一个进程访问资源。  </li>
-<li>同时共享方式：允许一个时间段内由多个进程“同时”对它们进行访问。  </li>
+<li>普通索引：允许在定义索引的列中插入重复值和空值  </li>
+<li>唯一索引：必须唯一，但允许有空值。主键索引是一种特殊的唯一索引，不允许有空值。  </li>
 </ul>
-<h3 id="虚拟"><a href="#虚拟" class="headerlink" title="虚拟"></a>虚拟</h3><p>是指把一个物理上的实体变为若干个逻辑上的对应物。物理实体是实际存在的，而逻辑上对应物是用户感受到的。<br>虚拟技术：</p>
+<hr>
 <ul>
-<li>空分复用技术  </li>
-<li>时分复用技术  </li>
+<li>单列索引：一个索引只包含单个列  </li>
+<li>组合索引：表的多个字段组合上创建的索引，只有在查询条件中用到了字段的左边字段时，索引才会被使用。  </li>
 </ul>
-<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><h3 id="计算机系统的层次结构"><a href="#计算机系统的层次结构" class="headerlink" title="计算机系统的层次结构"></a>计算机系统的层次结构</h3><p><img src="/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.jpg" alt="模型">  </p>
-<h3 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h3><p>1、当中断发生时，CPU立即进入核心态<br>2、当中断发生后，当前运行的进程暂停运行，并由操作系统内核对中断进行处理<br>3、对于不同的中断信号，会进行不同的处理  </p>
-<p>中断可以使CPU从用户态切换为核心态，使操作系统获得计算机的控制权。（唯一途径）  </p>
-<p>核心态-&gt;用户态的切换是通过执行一个特权指令，将程序状态字（PSW）的标志位设置为“用户态”。  </p>
-<p>系统调用  </p>
+<hr>
+<p>索引优点：</p>
 <ul>
-<li>设备管理</li>
-<li>文件管理</li>
-<li>进程控制</li>
-<li>进程通信</li>
-<li>内存管理  </li>
+<li>加快数据的查询速度</li>
+<li>唯一索引可以保证数据库表中每一行数据的唯一性</li>
+<li>加快表和表之间的连接</li>
+<li>在使用分组和排序子句进行数据查询时，可以显著减少其时间<br>索引缺点：</li>
+<li>占用磁盘空间，因为每个索引还要占一定的物理空间  </li>
+<li>对于添加、修改、删除操作会损耗性能，索引还需动态地维护<br>应对如下列建立索引  </li>
+<li>主键</li>
+<li>外键</li>
+<li>经常需要根据范围进行搜索的列</li>
+<li>经常需要排序的列</li>
+<li>经常出现在where语句中的列，加快条件的判断速度<br>不应对如下列建立索引  </li>
+<li>查询中很少用到的</li>
+<li>具有很少数据值的列，比如性别</li>
+<li>经常要增删改的列</li>
 </ul>
-<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>进程实体（静态的）：程序段、数据段、PCB<br>进程（动态的）：是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位。  </p>
-<p>PCB：进程控制块<br>用来描述进程的各种信息（如程序代码存放位置），系统为每个运行的程序配置一个数据结构。</p>
-<p><img src="/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/PCB.jpg" alt="模型">  </p>
-<h4 id="进程的特征"><a href="#进程的特征" class="headerlink" title="进程的特征"></a>进程的特征</h4><ul>
-<li>动态性</li>
-<li>并发性</li>
-<li>独立性</li>
-<li>异步性</li>
-<li>结构性</li>
+<h4 id="为什么B-树比B树更适合实际应用（在数据库索引中）？"><a href="#为什么B-树比B树更适合实际应用（在数据库索引中）？" class="headerlink" title="为什么B+树比B树更适合实际应用（在数据库索引中）？"></a>为什么B+树比B树更适合实际应用（在数据库索引中）？</h4><ul>
+<li>B+树的IO读写代价更低</li>
+<li>B+树的查询效率更加稳定  </li>
 </ul>
-<p>进程的状态<br><img src="/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81.jpg" alt="模型"> </p>
-<h3 id="创建原语"><a href="#创建原语" class="headerlink" title="创建原语"></a>创建原语</h3><p>1、申请空白PCB<br>2、为新进程分配所需资源<br>3、初始化PCB<br>4、将PCB插入就绪队列  </p>
-<p>进程通信</p>
-<ul>
-<li>共享存储</li>
-<li>消息传递</li>
-<li>管道通信  </li>
-</ul>
-<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>线程是一个基本的CPU执行单元，也是程序执行流的最小单位。线程是调度的基本单位。<br>引入线程后，进程只能作为除CPU之外的系统资源的分配单元。  </p>
-<p>❤线程是处理机调度的单位❤<br>❤进程是资源分配的单位❤  </p>
-<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><ul>
-<li>定义<br>在并发环境下，各进程因竞争资源而造成的一种互相等待对方手里的资源，导致各进程都阻塞，都无法向前推进的现象。  </li>
-<li>产生的必要条件  <ul>
-<li>互斥条件<br>对必须互斥使用的资源的争抢（如哲学家的筷子、打印机设备）。</li>
-<li>不剥夺条件<br>不由其他进程强行夺走，只能主动释放。</li>
-<li>请求和保持条件<br>进程已经保持了一个资源，去请求新的资源，对自己的资源保持不放。  </li>
-<li>循环等待条件<br>进程资源的循环等待链。</li>
-</ul>
-</li>
-</ul>
-<h3 id="预防死锁"><a href="#预防死锁" class="headerlink" title="预防死锁"></a>预防死锁</h3><p>破坏互斥条件、破坏不剥夺条件、破坏请求和保持条件、破坏循环等待条件。<br>1、把只能互斥使用的资源改造为允许共享使用。例如用SPOOLing技术将打印机改造为共享设备。<br>2、方案1 进程得不到满足时，主动释放<br>方案2 操作系统协调，强行剥夺<br>3、静态分配方法，即进程在运行前一次申请完它所需要的全部资源<br>4、顺序资源分配法，给系统资源编号，按编号递增顺序申请，相同编号的一次申请完。  </p>
-<h3 id="避免死锁"><a href="#避免死锁" class="headerlink" title="避免死锁"></a>避免死锁</h3><p>银行家算法：在资源分配之前预先判断这次分配是否会导致系统进入不安全状态，以此决定是否答应资源分配请求。  </p>
-<h3 id="死锁的检测和解除："><a href="#死锁的检测和解除：" class="headerlink" title="死锁的检测和解除："></a>死锁的检测和解除：</h3><p>资源分配图：依次消除与不阻塞进程相连的边，直到无边可消。  </p>
-<p>解除死锁的方法：  </p>
-<ul>
-<li>资源剥夺法  </li>
-<li>撤销进程法</li>
-<li>进程回退法</li>
-</ul>
-<p>如何决定“对谁动手”：</p>
-<ul>
-<li>进程优先级</li>
-<li>已执行时间</li>
-<li>还要多久才完成</li>
-<li>进程已经使用了多少资源</li>
-<li>进程是交互式还是批处理式的</li>
-</ul>
+<h4 id="为什么不用红黑树？"><a href="#为什么不用红黑树？" class="headerlink" title="为什么不用红黑树？"></a>为什么不用红黑树？</h4><p>因为数据量大的时候，会导致这种二叉树深度太深，IO次数会很多，层数很少的B+数可以有效降低IO次数。  </p>
+<h3 id="数据库的乐观锁和悲观锁是什么？"><a href="#数据库的乐观锁和悲观锁是什么？" class="headerlink" title="数据库的乐观锁和悲观锁是什么？"></a>数据库的乐观锁和悲观锁是什么？</h3><p>数据库管理系统（DBMS）中的并发控制的任务是确保在多个事务同时存取数据库中同一数据时不破坏事务的隔离性和统一性以及数据库的统一性。<br>乐观并发控制(乐观锁)和悲观并发控制（悲观锁）是并发控制主要采用的技术手段。<br>悲观锁：假定会发生并发冲突，屏蔽一切可能违反数据完整性的操作<br>乐观锁：假设不会发生并发冲突，只在提交操作时检查是否违反数据完整性。</p>
+<h3 id="简单说一说drop、delete与truncate的区别"><a href="#简单说一说drop、delete与truncate的区别" class="headerlink" title="简单说一说drop、delete与truncate的区别"></a>简单说一说drop、delete与truncate的区别</h3><p>SQL中的drop、delete、truncate都表示删除，但是三者有一些差别 ；<br>delete和truncate只删除表的数据不删除表的结构；<br>速度,一般来说: drop&gt; truncate &gt;delete ；<br>delete语句是dml,这个操作会放到rollback segement中,事务提交之后才生效；<br>如果有相应的trigger,执行的时候将被触发. truncate,drop是ddl, 操作立即生效,原数据不放到rollback segment中,不能回滚. 操作不触发trigger.<br>不再需要一张表的时候，用drop；<br>想删除部分数据行时候，用delete，并且带上where子句；<br>保留表而删除所有数据的时候用truncate。  </p>
 
       
     </div>
@@ -418,13 +379,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/">【操作系统】进程线程、死锁</a></p>
+        <p><span>本文标题:</span><a  href="/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">数据库常见面试题</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Amber Wang 的个人博客">Amber Wang</a></p>
-        <p><span>发布时间:</span>2020年10月09日 - 20时48分</p>
-        <p><span>最后更新:</span>2020年10月09日 - 23时47分</p>
+        <p><span>发布时间:</span>2020年09月15日 - 23时36分</p>
+        <p><span>最后更新:</span>2020年10月28日 - 10时02分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/" title="【操作系统】进程线程、死锁">http://yoursite.com/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/　　作者: Amber Wang" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" title="数据库常见面试题">http://yoursite.com/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/　　作者: Amber Wang" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -435,18 +396,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/10/11/%E3%80%90%E7%AC%94%E8%AF%95%E9%A2%98%E3%80%91%E6%95%B4%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2020/10/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【笔试题】整理
+          操作系统常见面试题
         
       </div>
     </a>
   
   
-    <a  href="/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【python】进阶知识</div>
+    <a  href="/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机网络常见面试题</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -458,7 +419,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统"><span class="toc-number">1.</span> <span class="toc-text">操作系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统的特征"><span class="toc-number">2.</span> <span class="toc-text">操作系统的特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并发"><span class="toc-number">3.</span> <span class="toc-text">并发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#共享"><span class="toc-number">4.</span> <span class="toc-text">共享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟"><span class="toc-number">5.</span> <span class="toc-text">虚拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步"><span class="toc-number">6.</span> <span class="toc-text">异步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机系统的层次结构"><span class="toc-number">7.</span> <span class="toc-text">计算机系统的层次结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中断"><span class="toc-number">8.</span> <span class="toc-text">中断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程"><span class="toc-number">9.</span> <span class="toc-text">进程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#进程的特征"><span class="toc-number">9.1.</span> <span class="toc-text">进程的特征</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建原语"><span class="toc-number">10.</span> <span class="toc-text">创建原语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程"><span class="toc-number">11.</span> <span class="toc-text">线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#死锁"><span class="toc-number">12.</span> <span class="toc-text">死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预防死锁"><span class="toc-number">13.</span> <span class="toc-text">预防死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#避免死锁"><span class="toc-number">14.</span> <span class="toc-text">避免死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#死锁的检测和解除："><span class="toc-number">15.</span> <span class="toc-text">死锁的检测和解除：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#范式"><span class="toc-number">1.</span> <span class="toc-text">范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务"><span class="toc-number">2.</span> <span class="toc-text">事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的隔离级别"><span class="toc-number">3.</span> <span class="toc-text">事务的隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#异常情况"><span class="toc-number">3.1.</span> <span class="toc-text">异常情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mysql的四种事务隔离级别"><span class="toc-number">3.2.</span> <span class="toc-text">Mysql的四种事务隔离级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事务隔离的实现：锁"><span class="toc-number">3.3.</span> <span class="toc-text">事务隔离的实现：锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL中MyISAM与InnoDB区别及选择"><span class="toc-number">3.4.</span> <span class="toc-text">MySQL中MyISAM与InnoDB区别及选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引"><span class="toc-number">4.</span> <span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么B-树比B树更适合实际应用（在数据库索引中）？"><span class="toc-number">4.1.</span> <span class="toc-text">为什么B+树比B树更适合实际应用（在数据库索引中）？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么不用红黑树？"><span class="toc-number">4.2.</span> <span class="toc-text">为什么不用红黑树？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库的乐观锁和悲观锁是什么？"><span class="toc-number">5.</span> <span class="toc-text">数据库的乐观锁和悲观锁是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单说一说drop、delete与truncate的区别"><span class="toc-number">6.</span> <span class="toc-text">简单说一说drop、delete与truncate的区别</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -531,18 +492,18 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/10/11/%E3%80%90%E7%AC%94%E8%AF%95%E9%A2%98%E3%80%91%E6%95%B4%E7%90%86/" title="上一篇: 【笔试题】整理">
+            <a  href="/2020/10/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" title="上一篇: 操作系统常见面试题">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/" title="下一篇: 【python】进阶知识">
+            <a  href="/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" title="下一篇: 计算机网络常见面试题">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/10/11/%E3%80%90%E7%AC%94%E8%AF%95%E9%A2%98%E3%80%91%E6%95%B4%E7%90%86/">【笔试题】整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/09/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/">【操作系统】进程线程、死锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/28/%E3%80%90python%E3%80%91%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/">【python】进阶知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/28/%E3%80%90python%E3%80%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">【python】基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/15/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-2/">【计算机网络】-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/12/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91-1/">【计算机网络】-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E9%A1%B5%E3%80%81%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E3%80%91%E3%80%90DML%20DDL%E3%80%91/">【MySQL】【分页、联合查询】【DML DDL】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%91/">【MySQL】【存储过程、函数】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E7%BA%A6%E6%9D%9F%E3%80%81%E4%BA%8B%E5%8A%A1%E3%80%91/">【MySQL】【约束、事务】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E8%BF%9E%E6%8E%A5%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【连接、子查询】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【分组查询】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/25/%E3%80%90MySQL%E3%80%91%E3%80%90%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2%E3%80%91/">【MySQL】【条件查询】</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/10/11/%E3%80%90%E7%AC%94%E8%AF%95%E9%A2%98%E3%80%91%E6%95%B4%E7%90%86/">【笔试题】整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">操作系统常见面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">数据库常见面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">计算机网络常见面试题</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
