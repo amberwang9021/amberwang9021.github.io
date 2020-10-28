@@ -12,24 +12,24 @@
   <meta name="description" content="计算机网络是不同用户进行数据交换的基础学科，其核心是各种网络协议的学习。网络协议是为计算机网络中进行数据交换而建立的规则、标准。如果不按这些协议进行约定，不同用户之间可能无法通信。本文介绍了一些计算机网络这门学科的一些常见高频面试题，读者可以按照文章目录的顺序进行理解记忆。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络常见面试题">
-<meta property="og:url" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:url" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="AmberWang&#39;s World">
 <meta property="og:description" content="计算机网络是不同用户进行数据交换的基础学科，其核心是各种网络协议的学习。网络协议是为计算机网络中进行数据交换而建立的规则、标准。如果不按这些协议进行约定，不同用户之间可能无法通信。本文介绍了一些计算机网络这门学科的一些常见高频面试题，读者可以按照文章目录的顺序进行理解记忆。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/%E6%89%B9%E6%B3%A82020-08-12.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/IP%E4%BA%94%E5%B1%82%E6%A8%A1%E5%9E%8B.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/ARP%E5%8D%8F%E8%AE%AE.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/Tcp%E6%8A%A5%E6%96%87%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%9B%BE%E8%A7%A3TCPIP.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/HTTP%E5%8D%8F%E8%AE%AE%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87.png">
+<meta property="og:image" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/%E6%89%B9%E6%B3%A82020-08-12.jpg">
+<meta property="og:image" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/IP%E4%BA%94%E5%B1%82%E6%A8%A1%E5%9E%8B.jpg">
+<meta property="og:image" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/ARP%E5%8D%8F%E8%AE%AE.jpg">
+<meta property="og:image" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/Tcp%E6%8A%A5%E6%96%87%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
+<meta property="og:image" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
+<meta property="og:image" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%9B%BE%E8%A7%A3TCPIP.png">
+<meta property="og:image" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png">
+<meta property="og:image" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/HTTP%E5%8D%8F%E8%AE%AE%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87.png">
 <meta property="article:published_time" content="2020-08-12T15:20:13.000Z">
 <meta property="article:modified_time" content="2020-10-27T06:40:06.658Z">
 <meta property="article:author" content="Amber Wang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/%E6%89%B9%E6%B3%A82020-08-12.jpg">
+<meta name="twitter:image" content="http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/%E6%89%B9%E6%B3%A82020-08-12.jpg">
   
     <link rel="alternative" href="/atom.xml" title="AmberWang&#39;s World" type="application/atom+xml">
   
@@ -377,8 +377,8 @@
         <p><span>发布时间:</span>2020年08月12日 - 23时20分</p>
         <p><span>最后更新:</span>2020年10月27日 - 14时40分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" title="计算机网络常见面试题">http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/　　作者: Amber Wang" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" title="计算机网络常见面试题">http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://amberwang9021.github.io.com/2020/08/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/　　作者: Amber Wang" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
